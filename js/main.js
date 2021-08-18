@@ -94,13 +94,15 @@ cakeDecorationList.push( new CakesIngredients ("colorful sprinkles",5,4,"colorfu
 cakeDecorationList.push( new CakesIngredients ("Chocolate Ganache Drip",6,4,"Classic chocolate drip over smooth frosting.",250));
 
 
-console.dir(cakeHouseList);
+////////////////////////////////////////////////////////////////////
+
+// GENERADOR DE PRODUCTOS
 
 // SELECCION DE CONTENEDOR DE CARDS
 const productList = document.getElementById('products-list');
 console.dir(productList);
 
-// GENERADOR DE CARDS AUTOMATICO
+// CREAR CARDS AUTOMATICAS
 for (const producto of cakeHouseList) {
   let card = document.createElement("div");
   card.setAttribute("class", "col-md-6 col-sm-6 col-lg-4");
@@ -122,90 +124,7 @@ for (const producto of cakeHouseList) {
   productList.appendChild(card);
 }
 
-// METODO 2 DE GENERAR HTML 
+////////////////////////////////////////////////////////////////////
 
-// cakeHouseList.forEach((producto)=>{
-
-// // Estructura de la card
-
-//         // <div class="col-md-6 col-sm-6 col-lg-3">
-//         //   <div class="product-grid">
-//         //     <div class="product-image">
-//         //         <a href="#" class="image">
-//         //             <img class="pic-1" src="./assets/img/cakes/birtday/birthday-full.jpeg">
-//         //             <img class="pic-2" src="./assets/img/cakes/birtday/birthday-slice.jpeg">
-//         //         </a>
-//         //     </div>
-//         //     <div class="product-content">
-//         //         <h3 class="title">
-//         //             <a href="#">Birthday</a>
-//         //         </h3>
-//         //         <div class="price">$75.99</div>
-//         //         <ul class="product-links">
-//         //             <li><a href="">Add to Cart</a></li>
-//         //             <li><a href=""><i class="fa fa-eye"></i></a></li>
-//         //             <li><a href=""><i class="far fa-heart"></i></a></li>
-//         //         </ul>
-//         //     </div>
-//         //   </div>
-//         // </div>
-
-//   let colum = document.createElement('div');
-//   colum.setAttribute("class", "col-md-6 col-sm-6 col-lg-3");
-
-//   let productGrid = document.createElement('div');
-//   productGrid.setAttribute("class", "product-grid");
-//   colum.appendChild(productGrid);
-
-//   let productImage = document.createElement('div');
-//   productImage.setAttribute("class", "product-image");
-//   productGrid.appendChild(productImage);
-
-//   let image = document.createElement('a');
-//   image.setAttribute("class", "image");
-//   image.setAttribute("href", "#");
-//   productImage.appendChild(image);
-
-//   let imageFirst = document.createElement('img');
-//   imageFirst.setAttribute("class", "pic-1");
-//   imageFirst.setAttribute("src", `${producto.image1}`);
-//   image.appendChild(imageFirst);
-
-//   let imageSecond = document.createElement('img');
-//   imageSecond.setAttribute("class", "pic-2");
-//   imageSecond.setAttribute("src", `${producto.image2}`);
-//   image.appendChild(imageSecond);
-
-//   let productContent = document.createElement('div');
-//   productContent.setAttribute("class", "product-content");
-//   colum.appendChild(productContent);
-
-//   let title = document.createElement('h3');
-//   title.setAttribute("class", "title");
-//   productContent.appendChild(title);
-
-//   let titleLink = document.createElement('a');
-//   titleLink.setAttribute("href", "#");
-//   titleLink.textContent = `${producto.name}`;
-//   title.appendChild(titleLink);
-
-//   let price = document.createElement('div');
-//   price.setAttribute("class", "price");
-//   price.textContent = `${producto.price}`;
-//   productContent.appendChild(price);
-
-//   let productLinks = document.createElement('ul');
-//   productLinks.setAttribute("class", "product-links");
-//   productContent.appendChild(productLinks);
-
-//   let add = document.createElement('li');
-//   productLinks.appendChild(add);
-
-//   let addLink = document.createElement('a');
-//   addLink.setAttribute("href", "#");
-//   addLink.textContent = "Add to cart";
-
-//   productList.appendChild(colum);
-
-// })
+// LLENAR OPCIONES DEL FORMULARIO MAKE YOUR CAKE
 

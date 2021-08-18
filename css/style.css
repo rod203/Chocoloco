@@ -209,3 +209,37 @@ Product cards
   Footer end
 **/
 
+/** 
+  Builder page
+**/
+.builder-container{
+  padding: 20px;
+}
+.title-builder {
+  font-family: 'STIX Two Text', serif;
+  font-size:24px;
+  border-bottom: 1px solid black;
+  margin-left: 10px;
+  margin-right: 10px;
+  line-height:30px;
+}
+
+.text-builder {
+  padding-top:10px;
+  padding-bottom: 0px;
+  font-family: 'Open Sans', sans-serif;
+  font-size:16px;
+  border-bottom: 1px solid black;
+  margin-left: 10px;
+  margin-right: 10px;
+  line-height:24px;
+}
+
+.info-builder {
+  margin: 10px;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+  font-style: italic;
+  font-size:14px;
+  line-height:20px;
+}
