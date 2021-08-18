@@ -131,9 +131,10 @@ for (const producto of cakeHouseList) {
 const baseList = document.getElementById('base-flavors');
 console.dir(baseList);
 
-for (const producto of cakeBaseList) {
+for (const base of cakeBaseList) {
   let listElement = document.createElement("option");
-  listElement.innerHTML =`${producto.name}`;
+  listElement.setAttribute("class", "selection-style");
+  listElement.innerHTML = `${base.name}`;
 
   baseList.appendChild(listElement);
 }
