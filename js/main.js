@@ -128,3 +128,12 @@ for (const producto of cakeHouseList) {
 
 // LLENAR OPCIONES DEL FORMULARIO MAKE YOUR CAKE
 
+const baseList = document.getElementById('base-flavors');
+console.dir(baseList);
+
+for (const producto of cakeBaseList) {
+  let listElement = document.createElement("option");
+  listElement.innerHTML =`${producto.name}`;
+
+  baseList.appendChild(listElement);
+}
