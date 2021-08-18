@@ -22,16 +22,26 @@ class CakesHouse {
 class CategoryProductList {
   constructor (name,code,description) {
     this.name = name,
-    this.code = code,
+    this.code = parseInt(code),
     this.description = description;
   }
 }
+
+class SizeList {
+  constructor (name,code,price) {
+    this.name = name,
+    this.code = parseInt(code),
+    this.price = parseFloat(price);
+  }
+}
+
 const categoryProductList = [];
 const cakeBaseList = [];
 const cakeFillingList = [];
 const cakeFrostingList = [];
 const cakeDecorationList = [];
 const cakeHouseList = [];
+const cakeSizeList = [];
 const cart = [];
 
 // Definiendo productos completos
@@ -65,11 +75,11 @@ cakeBaseList.push( new CakesIngredients ("Vanilla",6,1,"Simple vanilla sponge ca
 
 // Definiendo coberturas
 
-cakeFrostingList.push( new CakesIngredients ("White Buttercream",6,2,"White Buttercream.",250));
-cakeFrostingList.push( new CakesIngredients ("Chocolate Buttercream",6,2,"Chocolate Buttercream.",250));
-cakeFrostingList.push( new CakesIngredients ("Burnt Salted Caramel Buttercream",6,2,"Burnt Salted Caramel Buttercream.",250));
-cakeFrostingList.push( new CakesIngredients ("Cream Cheese Frosting",6,2,"Cream Cheese Frosting.",250));
-cakeFrostingList.push( new CakesIngredients ("Dark Chocolate ganache",6,2,"Dark Chocolate ganache.",250));
+cakeFrostingList.push( new CakesIngredients ("White Buttercream",1,2,"White Buttercream.",250));
+cakeFrostingList.push( new CakesIngredients ("Chocolate Buttercream",2,2,"Chocolate Buttercream.",250));
+cakeFrostingList.push( new CakesIngredients ("Burnt Salted Caramel Buttercream",3,2,"Burnt Salted Caramel Buttercream.",250));
+cakeFrostingList.push( new CakesIngredients ("Cream Cheese Frosting",4,2,"Cream Cheese Frosting.",250));
+cakeFrostingList.push( new CakesIngredients ("Dark Chocolate ganache",5,2,"Dark Chocolate ganache.",250));
 cakeFrostingList.push( new CakesIngredients ("Vanilla Whip Cream",6,2,"Vanilla Whip Cream.",250));
 
 // Definiendo rellenos
@@ -93,6 +103,12 @@ cakeDecorationList.push( new CakesIngredients ("Naked",5,4,"Naked with frosting 
 cakeDecorationList.push( new CakesIngredients ("colorful sprinkles",5,4,"colorful sprinkles around the cake.",250));
 cakeDecorationList.push( new CakesIngredients ("Chocolate Ganache Drip",6,4,"Classic chocolate drip over smooth frosting.",250));
 
+// Definiendo tamaños
+
+cakeSizeList.push( new SizeList ("15cm",1,0,));
+cakeSizeList.push( new SizeList ("20cm",2,200,));
+cakeSizeList.push( new SizeList ("25cm",3,350,));
+cakeSizeList.push( new SizeList ("30cm",4,500,));
 
 ////////////////////////////////////////////////////////////////////
 
@@ -100,7 +116,6 @@ cakeDecorationList.push( new CakesIngredients ("Chocolate Ganache Drip",6,4,"Cla
 
 // SELECCION DE CONTENEDOR DE CARDS
 const productList = document.getElementById('products-list');
-console.dir(productList);
 
 // CREAR CARDS AUTOMATICAS
 for (const producto of cakeHouseList) {
@@ -128,13 +143,69 @@ for (const producto of cakeHouseList) {
 
 // LLENAR OPCIONES DEL FORMULARIO MAKE YOUR CAKE
 
+
+// CAKE BASE
+
 const baseList = document.getElementById('base-flavors');
-console.dir(baseList);
 
 for (const base of cakeBaseList) {
   let listElement = document.createElement("option");
   listElement.setAttribute("class", "selection-style");
-  listElement.innerHTML = `${base.name}`;
+  listElement.setAttribute("value", `${base.productCode}`);
+  listElement.innerHTML = `${base.name} ($${base.price})`;
 
   baseList.appendChild(listElement);
 }
+
+// CAKE FILLINGS
+
+const fillingList = document.getElementById('filling-flavors');
+
+for (const filling of cakeFillingList) {
+  let listElement = document.createElement("option");
+  listElement.setAttribute("class", "selection-style");
+  listElement.setAttribute("value", `${filling.productCode}`);
+  listElement.innerHTML = `${filling.name} ($${filling.price})`;
+
+  fillingList.appendChild(listElement);
+}
+
+// CAKE FROSTINGS
+
+const frostingList = document.getElementById('frosting-flavors');
+
+for (const frosting of cakeFrostingList) {
+  let listElement = document.createElement("option");
+  listElement.setAttribute("class", "selection-style");
+  listElement.setAttribute("value", `${frosting.productCode}`);
+  listElement.innerHTML = `${frosting.name} ($${frosting.price})`;
+
+  frostingList.appendChild(listElement);
+}
+
+// CAKE DECORATION
+
+const decorationList = document.getElementById('decoration-style');
+
+for (const decoration of cakeDecorationList) {
+  let listElement = document.createElement("option");
+  listElement.setAttribute("class", "selection-style");
+  listElement.setAttribute("value", `${decoration.productCode}`);
+  listElement.innerHTML = `${decoration.name} ($${decoration.price})`;
+
+  decorationList.appendChild(listElement);
+}
+
+// CAKE SIZE
+
+const SizesList = document.getElementById('size-list');
+
+for (const size of cakeSizeList) {
+  let listElement = document.createElement("option");
+  listElement.setAttribute("class", "selection-style");
+  listElement.setAttribute("value", `${size.code}`);
+  listElement.innerHTML = `${size.name} ($${size.price})`;
+
+  SizesList.appendChild(listElement);
+}
+

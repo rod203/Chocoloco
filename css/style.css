@@ -215,6 +215,10 @@ Product cards
 .builder-container{
   padding: 20px;
 }
+.builder-image {
+  background-image: url(../assets/img/makeyourcake.jpg);
+  background-size: cover;
+}
 .title-builder {
   font-family: 'STIX Two Text', serif;
   font-size:24px;
@@ -242,4 +246,16 @@ Product cards
   font-style: italic;
   font-size:14px;
   line-height:20px;
+}
+
+.form-select {
+  font-size: 12px !important;
+  font-style: italic;
+  background-color:rgb(228, 228, 228) !important;
+}
+
+.text-area-mod {
+  font-size: 12px !important;
+  font-style: italic;
+  background-color:rgb(228, 228, 228) !important;
 }
