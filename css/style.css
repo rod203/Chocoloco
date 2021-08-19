@@ -259,3 +259,11 @@ Product cards
   font-style: italic;
   background-color:rgb(228, 228, 228) !important;
 }
+
+.alert-selector-empty {
+  font-size: 12px;
+  position: absolute;
+  margin: 0px;
+  padding: 0px;
+  color:red;
+}

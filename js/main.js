@@ -35,6 +35,22 @@ class SizeList {
   }
 }
 
+class CartProduct {
+  constructor (name,code,price) {
+    this.name = name,
+    this.code = parseInt(code),
+    this.price = parseFloat(price);
+  }
+}
+
+class MyCakeIngredientInfo {
+  constructor (name,code,price) {
+    this.name = name,
+    this.code = parseInt(code),
+    this.price = parseFloat(price);
+  }
+}
+
 const categoryProductList = [];
 const cakeBaseList = [];
 const cakeFillingList = [];
@@ -134,7 +150,7 @@ for (const producto of cakeHouseList) {
           <a href="#">${producto.name}</a>
       </h3>
       <div class="price">$${producto.price}</div>
-      <button type="button" class="btn btn-outline-primary product-links">Add to cart</button>
+      <button type="button" id="${producto.code}" class="btn btn-outline-primary product-links btn-add-cart">Add to cart</button>
     </div>`;
   productList.appendChild(card);
 }
@@ -142,7 +158,6 @@ for (const producto of cakeHouseList) {
 ////////////////////////////////////////////////////////////////////
 
 // LLENAR OPCIONES DEL FORMULARIO MAKE YOUR CAKE
-
 
 // CAKE BASE
 
@@ -209,3 +224,105 @@ for (const size of cakeSizeList) {
   SizesList.appendChild(listElement);
 }
 
+/////////////////////////////////////////////////////////////
+
+// ADD TO CART BOTON 
+
+const addBottons = document.getElementsByClassName('btn-add-cart');
+
+function addToCart() {
+  const add = cakeHouseList.find(product => product.id == this.code);
+  cart.push( new CartProduct (add.name,add.code,add.price));
+  console.log(cart);
+}
+
+for (const botton of addBottons) {
+  botton.addEventListener("click", addToCart);
+}
+
+// TODO: REPARAR ADD TO CART, AGREGA EL MISMO ELEMNTO SIEMPRE.
+
+/////////////////////////////////////////////////////////////
+// BUILDER
+
+let myCakePrice = parseFloat(0);
+let cake = document.getElementById('base-flavors').value;
+console.log(cake);
+function showcake () {
+  console.log(cake);
+}
+cake.addEventListener("change", showcake);
+
+
+
+// ADD TO CART BUILDER BOTON 
+
+const addBottonBuilder = document.getElementsByClassName('btn-add-cart-builder');
+
+
+function addToCartBuilder() {
+  // creo array para armar el producto
+  const newCake = [];
+  // obtengo el value de cada selector
+  let cake = document.getElementById('base-flavors').value;
+  let filling = document.getElementById('filling-flavors').value;
+  let frosting = document.getElementById('frosting-flavors').value;
+  let decoration = document.getElementById('decoration-style').value;
+  let writeText = document.getElementById('writeCakeText').value;
+  let size = document.getElementById('size-list').value;
+  let quantity = document.getElementById('quantity-list').value;
+  // creo array para apilar los ingredientes
+  const myCakeIngredients = [];
+  // Compruebo si el select esta vacio, si no, obtengo datos del igrediente y lo agrego al array.
+  if (cake != "default") {
+    // Busco opcion seleccionada
+    const myBase = cakeBaseList.find(product => product.productCode == cake);
+    // Sumo el valor al total.
+    myCakePrice = myCakePrice + myBase.price;
+    // Cargo los datos del ingrediente al array
+    myCakeIngredients.push( new MyCakeIngredientInfo (myBase.name,myBase.productCode,myBase.price));
+    // Busco una el elmento alert-selector-empty, si existe la elimina.
+    let removeMessege = document.getElementById('alert-selector-empty');
+    if (removeMessege != undefined){
+      removeMessege.remove();
+    }
+  } else {
+    // Si el selector no tiene opcion seleccionada muestra mensaje de alerta
+    messege = document.getElementById('base-selector');
+    div = document.createElement("div");
+    div.setAttribute("class", "alert-selector-empty");
+    div.setAttribute("id", "alert-selector-empty");
+    div.innerHTML = `<p>Please select an option.</p>`;
+    messege.appendChild(div);  
+  }
+  // Sigo comprobando selectores
+  if (filling != "default") {
+      const myBase = cakeFillingList.find(product => product.productCode == filling);
+      myCakePrice = myCakePrice + myBase.price;
+      myCakeIngredients.push( new MyCakeIngredientInfo (myBase.name,myBase.productCode,myBase.price));
+      let removeMessege = document.getElementById('alert-selector-empty');
+      if (removeMessege != undefined){
+        removeMessege.remove();
+      }
+    } else {
+      messege = document.getElementById('filling-selector');
+      div = document.createElement("div");
+      div.setAttribute("class", "alert-selector-empty");
+      div.setAttribute("id", "alert-selector-empty");
+      div.innerHTML = `<p>Please select an option.</p>`;
+      messege.appendChild(div);  
+    }
+    console.log(myCakePrice);
+}
+
+  
+
+const myCakeTotalPrice = document.getElementById('builder-total-price');
+let priceDiv = document.createElement("span");
+priceDiv.setAttribute("class", "input-group-text w-50");
+priceDiv.innerHTML = `${myCakePrice}`;
+myCakeTotalPrice.appendChild(priceDiv);
+
+for (const botton of addBottonBuilder) {
+  botton.addEventListener("click", addToCartBuilder);
+}

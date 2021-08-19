@@ -79,40 +79,53 @@
         </div>
         <div class="builder-form">
           <div class="form-group">
-            <label for="exampleSelect1" class="form-label mt-4 h6">Cake Flavor</label>
-            <select class="form-select" id="base-flavors">
-              <option class="selection-style" value="default">-- Choose Cake Flavor --</option>
-            </select>
-            <label for="exampleSelect1" class="form-label mt-4 h6">Filling Flavor</label>
-            <select class="form-select" id="filling-flavors">
+            <div id="base-selector">
+              <label for="exampleSelect1" class="form-label mt-4 h6">Cake Flavor</label>
+              <select class="form-select base-flavors" id="base-flavors">
+                <option class="selection-style" value="default">-- Choose Cake Flavor --</option>
+              </select>
+            </div>
+            <div id="filling-selector">
+              <label for="exampleSelect1" class="form-label mt-4 h6">Filling Flavor</label>
+              <select class="form-select" id="filling-flavors">
               <option class="selection-style" value="default">-- Choose Filling Flavor --</option>
-            </select>
-            <label for="exampleSelect1" class="form-label mt-4 h6">Frosting Flavor</label>
-            <select class="form-select" id="frosting-flavors">
-              <option class="selection-style" value="default">-- Choose Frosting Flavor --</option>
-            </select>
-            <label for="exampleSelect1" class="form-label mt-4 h6">Decoration style</label>
-            <select class="form-select" id="decoration-style">
-              <option class="selection-style" value="default">-- Choose Decoration style --</option>
-            </select>
+              </select>
+            </div>
+            <div id="frosting-selector">
+              <label for="exampleSelect1" class="form-label mt-4 h6">Frosting Flavor</label>
+              <select class="form-select" id="frosting-flavors">
+                <option class="selection-style" value="default">-- Choose Frosting Flavor --</option>
+              </select>
+            </div>
+            <div id="decoration-selector">
+              <label for="exampleSelect1" class="form-label mt-4 h6">Decoration style</label>
+              <select class="form-select" id="decoration-style">
+                <option class="selection-style" value="default">-- Choose Decoration style --</option>
+              </select>
+            </div>
             <label for="exampleTextarea" class="form-label mt-4 h6">What do you want us to write on your cake?</label>
-            <textarea class="form-control text-area-mod" id="exampleTextarea" rows="3"></textarea>
-            <label for="exampleSelect1" class="form-label mt-4 h6">Size</label>
-            <select class="form-select" id="size-list">
-              <option class="selection-style" value="default">-- Choose size cake --</option>
-            </select>
-            <label for="exampleSelect1" class="form-label mt-4 h6">Quantity</label>
-            <select class="form-select" id="quantity-list">
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-              <option value="6">6</option>
-            </select>
+            <textarea class="form-control text-area-mod" id="writeCakeText" rows="3"></textarea>
+            <div id="size-selector">
+              <label for="exampleSelect1" class="form-label mt-4 h6">Size</label>
+              <select class="form-select" id="size-list">
+                <option class="selection-style" value="default">-- Choose size cake --</option>
+              </select>
+            </div>
+            <div id="quantity-selector">
+              <label for="exampleSelect1" class="form-label mt-4 h6">Quantity</label>
+              <select class="form-select" id="quantity-list">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+              </select>
+            </div>
             <div class="input-group mt-4">
-              <span class="input-group-text w-50">Total: $</span>
-              <button class="btn btn-primary w-50" type="button" id="button-addon2">Add to cart</button>
+              <div class="builder-total-price"></div>
+              <span class="input-group-text w-50" id="builder-total-price">Total: $</span>
+              <button class="btn btn-primary w-50 btn-add-cart-builder" type="button" id="btn-add-cart-builder">Add to cart</button>
             </div>
           </div>
         </div>
