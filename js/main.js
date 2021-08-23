@@ -319,25 +319,31 @@ const addBottonBuilder = $(".btn-add-cart-builder");
 function selectEmptyValidaton () {
   if ($("#base").val() != ""){
     $("#select-empty-base").remove();
+    return true;
   } else {
-    $("#base-selector").append(`<p id="select-empty-base" class="alert-selector-empty">Pleace select an option.</p>`)
+    $("#base-selector").append(`<p id="select-empty-base" class="alert-selector-empty">Pleace select an option.</p>`);
   }
   if ($("#filling").val() != ""){
     $("#select-empty-base").remove();
+    return true;
   } else {
     $("#filling-selector").append(`<p id="select-empty-filling" class="alert-selector-empty">Pleace select an option.</p>`)
   } if ($("#frosting").val() != ""){
     $("#select-empty-frosting").remove();
+    return true;
   } else {
     $("#frosting-selector").append(`<p id="select-empty-frosting" class="alert-selector-empty">Pleace select an option.</p>`)
   } if ($("#decoration").val() != ""){
     $("#select-empty-decoration").remove();
+    return true;
   } else {
     $("#decoration-selector").append(`<p id="select-empty-decoration" class="alert-selector-empty">Pleace select an option.</p>`)
   } if ($("#size").val() != ""){
     $("#select-empty-size").remove();
+    return true;
   } else {
-    $("#size-selector").append(`<p id="select-empty-size" class="alert-selector-empty">Pleace select an option.</p>`)
+    $("#size-selector").append(`<p id="select-empty-size" class="alert-selector-empty">Pleace select an option.</p>`);
+    return false;
   }
 }
 
@@ -345,26 +351,25 @@ let myCakePrice = 0;
 
 // funcion para agregar al carrito del boton builder cake
 function addToCartBuilder() {
-  selectEmptyValidaton ();
-  let writeCakeText = $("#writeCakeText").val();
-  myCakeIngredients[4] = new MyCakeIngredientInfo ("Write Text: " + writeCakeText , 0, 0 );
-  let myCakeDescription =  myCakeIngredients;
-  cart.push(new CartProduct("Cake Builder",00,myCakePrice,myCakeDescription));
-  console.log(cart);
-  for (const price of myCakeIngredients) {
-    cartTotalPrice = cartTotalPrice + myCakeIngredients.price;
-    console.log(cartTotalPrice);
-  }
+  selectEmptyValidaton();
+    // armo el array del producto del carro
+    let writeCakeText = $("#writeCakeText").val();
+    myCakeIngredients[4] = new MyCakeIngredientInfo ("Write Text: " + writeCakeText , 0, 0 );
+    let myCakeDescription =  myCakeIngredients;
+    cart.push(new CartProduct("Cake Builder",00,myCakePrice,myCakeDescription));
+    // Sumo el total al total del carro
+    console.log(cakeBuilderTotalPrice);    
 }
 
 for (const botton of addBottonBuilder) {
   botton.addEventListener("click", addToCartBuilder);
 }
-
+let cakeBuilderTotalPrice = 0;
+// CALCULADOR  DE PRECIO DINAMICO
 function builderCakePrice () {
-  let cakeBuilderTotalPrice = parseFloat("0");
+  cakeBuilderTotalPrice = parseFloat(0);
   for (const ingrediente of myCakeIngredients) {
-      console.log(ingrediente.price);
+    cakeBuilderTotalPrice = cakeBuilderTotalPrice + ingrediente.price;
   }
   $("#total-builder-price").remove();
   $("#builder-total-price").append(`<p id="total-builder-price">total: $ ${cakeBuilderTotalPrice}</p>`);
