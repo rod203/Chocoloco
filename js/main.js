@@ -62,6 +62,7 @@ const cakeSizeList = [];
 const cart = [];
 const myCakeIngredients = [];
 
+
 // Definiendo productos completos
 
 cakeHouseList.push( new CakesHouse ("BIRTHDAY CAKE",1,"Vanilla sponge cake with confetti sprinkles baked in. Filled with vanilla whipped cream and frosted with a funfetti buttercream (confetti sprinkles mixed with buttercream). Decorated naked with a few jimmies sprinkled on top.",250,"./assets/img/cakes/birtday/birthday-full.jpeg","./assets/img/cakes/birtday/birthday-slice.jpeg"));
@@ -262,6 +263,7 @@ function cakeBaseSelector (){
   myCakeIngredients[0] = new MyCakeIngredientInfo (ingredient.name,ingredient.productCode,ingredient.price);
   console.log(myCakeIngredients);
   $("#select-empty-base").remove();
+
 }
 function cakeFillingSelector (){
   let select = document.getElementById('filling').value;
@@ -336,8 +338,8 @@ function selectEmptyValidaton () {
   }
 }
 
+let cakeBuilderTotalPrice = parseFloat(0);
 let myCakePrice = 0;
-
 // funcion para agregar al carrito del boton builder cake
 function addToCartBuilder() {
   selectEmptyValidaton();
@@ -353,16 +355,16 @@ function addToCartBuilder() {
 for (const botton of addBottonBuilder) {
   botton.addEventListener("click", addToCartBuilder);
 }
-let cakeBuilderTotalPrice = 0;
+
 // CALCULADOR  DE PRECIO DINAMICO
 function builderCakePrice () {
   cakeBuilderTotalPrice = parseFloat(0);
-  console.log(myCakeIngredients);
-  let ing1 = myCakeIngredients[0].price;
-  let ing2 = myCakeIngredients[1].price;
-  // let ingrediente2 = myCakeIngredients[1].price;
-  console.log(ing2);
-
+  for (const price of myCakeIngredients) {
+    if (price.price != null) {
+      cakeBuilderTotalPrice = + cakeBuilderTotalPrice + price.price;
+    }
+  }
+  console.log(cakeBuilderTotalPrice);
   $("#total-builder-price").remove();
   $("#builder-total-price").append(`<p id="total-builder-price">total: $ ${cakeBuilderTotalPrice}</p>`);
 }
