@@ -365,6 +365,7 @@ for (const botton of addBottonBuilder) {
   botton.addEventListener("click", addToCartBuilder);
 }
 
+$("#builder-total-price").append(`<p id="total-builder-price" class="total-price-builder";>total: $0</p>`);
 // CALCULADOR  DE PRECIO DINAMICO
 function builderCakePrice () {
   cakeBuilderTotalPrice = parseFloat(0);
@@ -382,8 +383,17 @@ function builderCakePrice () {
   $("#builder-total-price").append(`<p id="total-builder-price" class="total-price-builder";>total: $${cakeBuilderTotalPrice}</p>`);
 }
 
+$("#cart-total-price").append(`<p class="total-price">$0</p>`);
 // precio total del carrito
 function cartTotal() {
   $(".total-price").remove();
   $("#cart-total-price").append(`<p class="total-price">$${cartTotalPrice}</p>`);
+}
+
+// Botton Reset Builder
+
+function resetBuilder() {
+  for (const select of idsSelectors){
+    $("#"+select).val() = 0;
+  }
 }

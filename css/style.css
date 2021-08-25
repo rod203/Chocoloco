@@ -289,3 +289,27 @@ Product cards
   margin-left: 5px;
   color:red;
 }
+.reset-container {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 5px;
+}
+.reset-content {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+.icon-reset {
+  margin-right:5px;
+}
+.reset-selectors {
+  margin: 0px;
+  padding: 0px;
+  font-size: 12px;
+}
+.reset-link {
+  text-decoration:none;
+}
+.reset-link:hover {
+  color:red;
+}
