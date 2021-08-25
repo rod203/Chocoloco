@@ -26,7 +26,6 @@
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
-      
           <div class="collapse navbar-collapse" id="navbarColor03">
             <ul class="navbar-nav me-auto">
               <li class="nav-item">
@@ -45,6 +44,9 @@
               </li>
             </ul>
           </div>
+          <div id="cart-total-price" class="cart-total-nav"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-bag" viewBox="0 0 16 16">
+            <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z"/>
+          </svg></div>
         </div>
       </nav>
     </div>
@@ -82,25 +84,25 @@
             <div id="base-selector">
               <label for="exampleSelect1" class="form-label mt-4 h6">Cake Flavor</label>
               <select class="form-select" id="base" onchange="cakeBaseSelector();builderCakePrice();">
-                <option class="selection-style" value="">-- Choose Cake Flavor --</option>
+                <option class="selection-style" value="0">-- Choose Cake Flavor --</option>
               </select>
             </div>
             <div id="filling-selector">
               <label for="exampleSelect1" class="form-label mt-4 h6">Filling Flavor</label>
               <select class="form-select" id="filling" onchange="cakeFillingSelector(); builderCakePrice();">
-              <option class="selection-style" value="">-- Choose Filling Flavor --</option>
+              <option class="selection-style" value="0">-- Choose Filling Flavor --</option>
               </select>
             </div>
             <div id="frosting-selector">
               <label for="exampleSelect1" class="form-label mt-4 h6">Frosting Flavor</label>
               <select class="form-select" id="frosting" onchange="cakeFrostingSelector(); builderCakePrice();">
-                <option class="selection-style" value="">-- Choose Frosting Flavor --</option>
+                <option class="selection-style" value="0">-- Choose Frosting Flavor --</option>
               </select>
             </div>
             <div id="decoration-selector">
               <label for="exampleSelect1" class="form-label mt-4 h6">Decoration style</label>
               <select class="form-select" id="decoration" onchange="cakeDecorationSelector(); builderCakePrice();">
-                <option class="selection-style" value="">-- Choose Decoration style --</option>
+                <option class="selection-style" value="0">-- Choose Decoration style --</option>
               </select>
             </div>
             <label for="exampleTextarea" class="form-label mt-4 h6">What do you want us to write on your cake?</label>
@@ -108,7 +110,7 @@
             <div id="size-selector">
               <label for="exampleSelect1" class="form-label mt-4 h6">Size</label>
               <select class="form-select" id="size" onchange="cakeSizeSelector(); builderCakePrice();">
-                <option class="selection-style" value="">-- Choose size cake --</option>
+                <option class="selection-style" value="0">-- Choose size cake --</option>
               </select>
             </div>
             <div id="quantity-selector">

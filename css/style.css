@@ -267,3 +267,25 @@ Product cards
   padding: 0px;
   color:red;
 }
+
+.cart-total-nav{
+  display: flex;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+}
+.total-price {
+  margin:0px;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+  margin-left: 5px;
+}
+.total-price-builder {
+  margin:0px;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  margin-left: 5px;
+  color:red;
+}

@@ -129,6 +129,14 @@ cakeSizeList.push( new SizeList ("20cm",2,200,));
 cakeSizeList.push( new SizeList ("25cm",3,350,));
 cakeSizeList.push( new SizeList ("30cm",4,500,));
 
+myCakeIngredients.push( new MyCakeIngredientInfo (" ",0,0,));
+myCakeIngredients.push( new MyCakeIngredientInfo (" ",0,0,));
+myCakeIngredients.push( new MyCakeIngredientInfo (" ",0,0,));
+myCakeIngredients.push( new MyCakeIngredientInfo (" ",0,0,));
+myCakeIngredients.push( new MyCakeIngredientInfo (" ",0,0,));
+myCakeIngredients.push( new MyCakeIngredientInfo (" ",0,0,));
+
+
 ////////////////////////////////////////////////////////////////////
 
 // GENERADOR DE PRODUCTOS
@@ -241,13 +249,12 @@ function addToCart() {
   console.log(cart);
   cartTotalPrice = cartTotalPrice + add.price;
   console.log(cartTotalPrice);
+  cartTotal()
 }
 
 for (const botton of addBottons) {
   botton.addEventListener("click", addToCart);
 }
-
-// TODO: REPARAR ADD TO CART, AGREGA EL MISMO ELEMNTO SIEMPRE.
 
 /////////////////////////////////////////////////////////////
 
@@ -320,36 +327,38 @@ const idsSelectors = ["base","filling","frosting","decoration","size"];
 function selectEmptyValidaton () {
   for (const select of idsSelectors){
     let selection = "select-empty-" + select;
-    console.log(selection);
-  if ($(select).val() != null){
-    $(selection).remove();
+    if ($("#"+select).val() != "0"){
+    $("#"+selection).remove();
   } else {
     let selectorFather = select + "-selector";
-    console.log(selectorFather);
-    const div = document.getElementById(selectorFather);
-    console.log(div);
-    let alert = document.createElement("div");
-    alert.setAttribute("id", `${selection}`);
-    alert.setAttribute("class", `alert-selector-empty`);
-    alert.innerHTML = `<p>Pleace select an option.</p>`;
-    console.log(alert);
-    document.querySelector("#"+selectorFather).appendChild(alert);
+    let getIn = document.getElementById("base-selector");
+    let message = document.createElement("div");
+    message.setAttribute("id",selection);
+    message.innerHTML = `<p class="alert-selector-empty">Pleace select an option.</p>`
+    getIn.appendChild(message);
     }
   }
 }
 
 let cakeBuilderTotalPrice = parseFloat(0);
-let myCakePrice = 0;
 // funcion para agregar al carrito del boton builder cake
 function addToCartBuilder() {
-  selectEmptyValidaton();
-  // armo el array del producto del carro
-  let writeCakeText = $("#writeCakeText").val();
-  myCakeIngredients[4] = new MyCakeIngredientInfo ("Write Text: " + writeCakeText , 0, 0 );
-  let myCakeDescription =  myCakeIngredients;
-  cart.push(new CartProduct("Cake Builder",00,myCakePrice,myCakeDescription));
-  // Sumo el total al total del carro
-  console.log(cakeBuilderTotalPrice);    
+    selectEmptyValidaton();
+    // armo el array del producto del carro
+    let writeCakeText = $("#writeCakeText").val();
+    myCakeIngredients[4] = new MyCakeIngredientInfo ("Write Text: " + writeCakeText , 0, 0 );
+    let myCakeDescription =  myCakeIngredients;
+
+    cart.push(new CartProduct("Cake Builder",00,cakeBuilderTotalPrice,myCakeDescription));
+    // Sumo el total al total del carro
+    console.log(cart);   
+    for (const messege of idsSelectors){
+      let msn = "#select-empty-" + messege;
+      $(msn).remove(); 
+    }
+    cartTotalPrice = cartTotalPrice + cakeBuilderTotalPrice;
+    console.log(cartTotalPrice);
+    cartTotal()
 }
 
 for (const botton of addBottonBuilder) {
@@ -361,11 +370,20 @@ function builderCakePrice () {
   cakeBuilderTotalPrice = parseFloat(0);
   for (const price of myCakeIngredients) {
     if (price.price != null) {
-      cakeBuilderTotalPrice = + cakeBuilderTotalPrice + price.price;
+      if (price.code == 99){
+        cakeBuilderTotalPrice = cakeBuilderTotalPrice * price.price;
+      } else {
+        cakeBuilderTotalPrice = cakeBuilderTotalPrice + price.price;
+      }
     }
   }
   console.log(cakeBuilderTotalPrice);
   $("#total-builder-price").remove();
-  $("#builder-total-price").append(`<p id="total-builder-price">total: $ ${cakeBuilderTotalPrice}</p>`);
+  $("#builder-total-price").append(`<p id="total-builder-price" class="total-price-builder";>total: $${cakeBuilderTotalPrice}</p>`);
 }
 
+// precio total del carrito
+function cartTotal() {
+  $(".total-price").remove();
+  $("#cart-total-price").append(`<p class="total-price">$${cartTotalPrice}</p>`);
+}
