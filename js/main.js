@@ -9,13 +9,14 @@ class CakesIngredients {
 }
 
 class CakesHouse {
-  constructor (name,code,description,price,image1,image2) {
+  constructor (name,code,description,price,image1,image2,quantity) {
     this.name = name,
     this.code = parseInt(code),
     this.description = description,
     this.price = parseFloat(price),
     this.image1 = image1,
-    this.image2 = image2
+    this.image2 = image2,
+    this.quantity = parseInt(quantity);
   }
 }
 
@@ -36,11 +37,12 @@ class SizeList {
 }
 
 class CartProduct {
-  constructor (name,code,price,description) {
+  constructor (name,code,price,description,quantity) {
     this.name = name,
     this.code = parseInt(code),
     this.price = parseFloat(price),
-    this.description = description;
+    this.description = description,
+    this.quantity = parseInt(quantity);
   }
 }
 
@@ -65,15 +67,15 @@ const myCakeIngredients = [];
 
 // Definiendo productos completos
 
-cakeHouseList.push( new CakesHouse ("BIRTHDAY CAKE",1,"Vanilla sponge cake with confetti sprinkles baked in. Filled with vanilla whipped cream and frosted with a funfetti buttercream (confetti sprinkles mixed with buttercream). Decorated naked with a few jimmies sprinkled on top.",250,"./assets/img/cakes/birtday/birthday-full.jpeg","./assets/img/cakes/birtday/birthday-slice.jpeg"));
-cakeHouseList.push( new CakesHouse ("STRAWBERRY CAKE",2,"Our classic vanilla chiffon cake layered with fresh strawberry cream and then topped with strawberry buttercream, in our signature ombre design.",250,"./assets/img/cakes/strawberry/strawberry-full.jpg","./assets/img/cakes/strawberry/strawberry-slice.jpg"));
-cakeHouseList.push( new CakesHouse ("THE BIRTHDAY CAKE",3,"Our sinfully delicious devil's food cake layered with whipped cream, topped with vanilla buttercream, and finished with colorful jimmies.",250,"./assets/img/cakes/devil party/devilparty-full.jpg","./assets/img/cakes/devil party/devilparty-slice.jpg"));
-cakeHouseList.push( new CakesHouse ("SALTED CARAMEL CAKE",4,"Our sinfully delicious devil's food cake layered with burnt caramel Bavarian, and then topped with caramel buttercream. In a grand finale, we drizzle the top with ganache and Maldon salt.",250,"./assets/img/cakes/salted caramel/saltedcaramel-full.jpg","./assets/img/cakes/salted caramel/saltedcaramel-slice.jpg"));
-cakeHouseList.push( new CakesHouse ("GOURMAND",5,"Our sinfully delicious devil's food cake layered and topped with decadent E Guittard 81% chocolate frosting.",250,"./assets/img/cakes/gourmand/gourmand-full.jpg","./assets/img/cakes/gourmand/gourmand-slice.jpg"));
-cakeHouseList.push( new CakesHouse ("RED VELVET CAKE",6,"Our rich red velvet chocolate cake layered and topped with cream cheese icing.",250,"./assets/img/cakes/red velvet/redvelve-full.jpg","./assets/img/cakes/red velvet/redvelve-slice.jpg"));
-cakeHouseList.push( new CakesHouse ("CARROT CAKE",7,"Carrot Cake studded with pineapple, raisins and walnuts — then layered and topped with cream cheese icing. (It counts as a serving of veggies!).",250,"./assets/img/cakes/carrot/carrot-full.jpeg","./assets/img/cakes/carrot/carrot-slice.jpeg"));
-cakeHouseList.push( new CakesHouse ("LEMON PASSIONFRUIT CAKE",8,"Our classic vanilla chiffon cake layered with lemon whipped cream and then topped with passionfruit buttercream in our signature ombre design. Need to Build Your Own Cake?.",250,"./assets/img/cakes/lemon/lemon-full.jpg","./assets/img/cakes/lemon/lemon-slice.jpg"));
-cakeHouseList.push( new CakesHouse ("NE -O COOKIE CAKE",9,"Our rich devil’s food cake layered with a filling that tastes just like your favorite childhood cookie and topped with whipped cream and mini oreos.",250,"./assets/img/cakes/ne-o cookie/neo-full.jpg","./assets/img/cakes/ne-o cookie/neo-slice.jpeg"));
+cakeHouseList.push( new CakesHouse ("BIRTHDAY CAKE",1,"Vanilla sponge cake with confetti sprinkles baked in. Filled with vanilla whipped cream and frosted with a funfetti buttercream (confetti sprinkles mixed with buttercream). Decorated naked with a few jimmies sprinkled on top.",250,"./assets/img/cakes/birtday/birthday-full.jpeg","./assets/img/cakes/birtday/birthday-slice.jpeg",1));
+cakeHouseList.push( new CakesHouse ("STRAWBERRY CAKE",2,"Our classic vanilla chiffon cake layered with fresh strawberry cream and then topped with strawberry buttercream, in our signature ombre design.",250,"./assets/img/cakes/strawberry/strawberry-full.jpg","./assets/img/cakes/strawberry/strawberry-slice.jpg",1));
+cakeHouseList.push( new CakesHouse ("THE BIRTHDAY CAKE",3,"Our sinfully delicious devil's food cake layered with whipped cream, topped with vanilla buttercream, and finished with colorful jimmies.",250,"./assets/img/cakes/devil party/devilparty-full.jpg","./assets/img/cakes/devil party/devilparty-slice.jpg",1));
+cakeHouseList.push( new CakesHouse ("SALTED CARAMEL CAKE",4,"Our sinfully delicious devil's food cake layered with burnt caramel Bavarian, and then topped with caramel buttercream. In a grand finale, we drizzle the top with ganache and Maldon salt.",250,"./assets/img/cakes/salted caramel/saltedcaramel-full.jpg","./assets/img/cakes/salted caramel/saltedcaramel-slice.jpg",1));
+cakeHouseList.push( new CakesHouse ("GOURMAND",5,"Our sinfully delicious devil's food cake layered and topped with decadent E Guittard 81% chocolate frosting.",250,"./assets/img/cakes/gourmand/gourmand-full.jpg","./assets/img/cakes/gourmand/gourmand-slice.jpg",1));
+cakeHouseList.push( new CakesHouse ("RED VELVET CAKE",6,"Our rich red velvet chocolate cake layered and topped with cream cheese icing.",250,"./assets/img/cakes/red velvet/redvelve-full.jpg","./assets/img/cakes/red velvet/redvelve-slice.jpg",1));
+cakeHouseList.push( new CakesHouse ("CARROT CAKE",7,"Carrot Cake studded with pineapple, raisins and walnuts — then layered and topped with cream cheese icing. (It counts as a serving of veggies!).",250,"./assets/img/cakes/carrot/carrot-full.jpeg","./assets/img/cakes/carrot/carrot-slice.jpeg",1));
+cakeHouseList.push( new CakesHouse ("LEMON PASSIONFRUIT CAKE",8,"Our classic vanilla chiffon cake layered with lemon whipped cream and then topped with passionfruit buttercream in our signature ombre design. Need to Build Your Own Cake?.",250,"./assets/img/cakes/lemon/lemon-full.jpg","./assets/img/cakes/lemon/lemon-slice.jpg",1));
+cakeHouseList.push( new CakesHouse ("NE -O COOKIE CAKE",9,"Our rich devil’s food cake layered with a filling that tastes just like your favorite childhood cookie and topped with whipped cream and mini oreos.",250,"./assets/img/cakes/ne-o cookie/neo-full.jpg","./assets/img/cakes/ne-o cookie/neo-slice.jpeg",1));
 
 
 // Definiendo categorias
@@ -245,11 +247,23 @@ const addBottons = $(".btn-add-cart");
 
 function addToCart() {
   const add = cakeHouseList.find(producto => producto.code == this.id);
-  cart.push (new CartProduct (add.name, add.code, add.price, add.description));
+  if (add.code != null){
+    cart.push (new CartProduct (add.name, add.code, add.price, add.description, add.quantity));
+  } else {
+    for ( i = 0; i < cart.length; i++){
+      let quantity = parseInt(0);
+      console.log(add.code);
+      if (add.code === cart[i].code) {
+        cart[i].quantity++;
+      } else {
+        cart.push (new CartProduct (add.name, add.code, add.price, add.description, add.quantity));
+      }
+    }
+  }
   console.log(cart);
-  cartTotalPrice = cartTotalPrice + add.price;
+  cartTotalPrice = cartTotalPrice + (add.price * quantity);
   console.log(cartTotalPrice);
-  cartTotal()
+  cartTotal();
 }
 
 for (const botton of addBottons) {
@@ -261,14 +275,12 @@ for (const botton of addBottons) {
 // BUILDER
 
 // ACUMULO SELECCIONES DINAMICAMENTE EN CADA CAMBIO DE SELECCION
-
 function cakeBaseSelector (){
   let select = document.getElementById('base').value;
   // Busco opcion seleccionada
   const ingredient = cakeBaseList.find(product => product.productCode == select);
   // Cargo los datos del ingrediente al array
   myCakeIngredients[0] = new MyCakeIngredientInfo (ingredient.name,ingredient.productCode,ingredient.price);
-  console.log(myCakeIngredients);
   $("#select-empty-base").remove();
 
 }
@@ -278,7 +290,6 @@ function cakeFillingSelector (){
   const ingredient = cakeFillingList.find(product => product.productCode == select);
   // Cargo los datos del ingrediente al array
   myCakeIngredients[1] = new MyCakeIngredientInfo (ingredient.name,ingredient.productCode,ingredient.price);
-  console.log(myCakeIngredients);
   $("#select-empty-filling").remove();
 }
 function cakeFrostingSelector (){
@@ -287,7 +298,6 @@ function cakeFrostingSelector (){
   const ingredient = cakeFrostingList.find(product => product.productCode == select);
   // Cargo los datos del ingrediente al array
   myCakeIngredients[2] = new MyCakeIngredientInfo (ingredient.name,ingredient.productCode,ingredient.price);
-  console.log(myCakeIngredients);
   $("#select-empty-frosting").remove();
 }
 function cakeDecorationSelector (){
@@ -296,7 +306,6 @@ function cakeDecorationSelector (){
   const ingredient = cakeDecorationList.find(product => product.productCode == select);
   // Cargo los datos del ingrediente al array
   myCakeIngredients[3] = new MyCakeIngredientInfo (ingredient.name,ingredient.productCode,ingredient.price);
-  console.log(myCakeIngredients);
   $("#select-empty-decoration").remove();
 }
 function cakeSizeSelector (){
@@ -305,13 +314,11 @@ function cakeSizeSelector (){
   const ingredient = cakeSizeList.find(product => product.code == select);
   // Cargo los datos del ingrediente al array
   myCakeIngredients[5] = new MyCakeIngredientInfo (ingredient.name,ingredient.code,ingredient.price);
-  console.log(myCakeIngredients);
   $("#select-empty-size").remove();
 }
 function cakeQuantitySelector (){
   let select = document.getElementById('quantity').value;
   myCakeIngredients[6] = new MyCakeIngredientInfo ("Quantity: " + select,99, select );
-  console.log(myCakeIngredients);
 }
 
 
@@ -324,6 +331,7 @@ const addBottonBuilder = $(".btn-add-cart-builder");
 // array con los id de los selectores
 const idsSelectors = ["base","filling","frosting","decoration","size"];
 
+// VALIDACION DE SELECTORES VACIOS1
 function selectEmptyValidaton () {
   for (const select of idsSelectors){
     let selection = "select-empty-" + select;
@@ -348,7 +356,6 @@ function addToCartBuilder() {
     let writeCakeText = $("#writeCakeText").val();
     myCakeIngredients[4] = new MyCakeIngredientInfo ("Write Text: " + writeCakeText , 0, 0 );
     let myCakeDescription =  myCakeIngredients;
-
     cart.push(new CartProduct("Cake Builder",00,cakeBuilderTotalPrice,myCakeDescription));
     // Sumo el total al total del carro
     console.log(cart);   
@@ -365,11 +372,16 @@ for (const botton of addBottonBuilder) {
   botton.addEventListener("click", addToCartBuilder);
 }
 
+// primer append para el carrito del nav
 $("#builder-total-price").append(`<p id="total-builder-price" class="total-price-builder";>total: $0</p>`);
-// CALCULADOR  DE PRECIO DINAMICO
+
+// CALCULADOR DE PRECIO DINAMICO
 function builderCakePrice () {
+  // inicio en el total price en 0
   cakeBuilderTotalPrice = parseFloat(0);
+  // itero por todos los ingredientes
   for (const price of myCakeIngredients) {
+    // si esta vacio suma todos los ingredientes y los multiplica por la cantidad.
     if (price.price != null) {
       if (price.code == 99){
         cakeBuilderTotalPrice = cakeBuilderTotalPrice * price.price;
@@ -379,19 +391,21 @@ function builderCakePrice () {
     }
   }
   console.log(cakeBuilderTotalPrice);
+  // remuevo precio viejo, agrego precio nuevo.
   $("#total-builder-price").remove();
   $("#builder-total-price").append(`<p id="total-builder-price" class="total-price-builder";>total: $${cakeBuilderTotalPrice}</p>`);
 }
 
+// defino inicio de carrito del nav
 $("#cart-total-price").append(`<p class="total-price">$0</p>`);
 // precio total del carrito
 function cartTotal() {
+  // remuevo precio viejo, agrego precio nuevo.
   $(".total-price").remove();
   $("#cart-total-price").append(`<p class="total-price">$${cartTotalPrice}</p>`);
 }
 
 // Botton Reset Builder
-
 function resetBuilder() {
   for (const select of idsSelectors){
     $("#"+select).val() = 0;

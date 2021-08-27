@@ -284,10 +284,12 @@ Product cards
 .total-price-builder {
   margin:0px;
   font-family: 'Open Sans', sans-serif;
-  font-weight: 400;
-  font-size: 16px;
+  font-weight: 600;
+  font-size: 14px;
   margin-left: 5px;
-  color:red;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color:black;
 }
 .reset-container {
   display: flex;
@@ -312,4 +314,14 @@ Product cards
 }
 .reset-link:hover {
   color:red;
+}
+.btn-add-cart-builder {
+  background-color:black;
+  color:white;
+  border:none;
+  text-transform: uppercase;
+}
+.btn-add-cart-builder:hover {
+  background-color: #7ff0d4;
+  
 }
