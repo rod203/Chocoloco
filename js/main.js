@@ -64,7 +64,6 @@ const cakeSizeList = [];
 const cart = [];
 const myCakeIngredients = [];
 
-
 // Definiendo productos completos
 
 cakeHouseList.push( new CakesHouse ("BIRTHDAY CAKE",1,"Vanilla sponge cake with confetti sprinkles baked in. Filled with vanilla whipped cream and frosted with a funfetti buttercream (confetti sprinkles mixed with buttercream). Decorated naked with a few jimmies sprinkled on top.",250,"./assets/img/cakes/birtday/birthday-full.jpeg","./assets/img/cakes/birtday/birthday-slice.jpeg",1));
@@ -76,7 +75,6 @@ cakeHouseList.push( new CakesHouse ("RED VELVET CAKE",6,"Our rich red velvet cho
 cakeHouseList.push( new CakesHouse ("CARROT CAKE",7,"Carrot Cake studded with pineapple, raisins and walnuts — then layered and topped with cream cheese icing. (It counts as a serving of veggies!).",250,"./assets/img/cakes/carrot/carrot-full.jpeg","./assets/img/cakes/carrot/carrot-slice.jpeg",1));
 cakeHouseList.push( new CakesHouse ("LEMON PASSIONFRUIT CAKE",8,"Our classic vanilla chiffon cake layered with lemon whipped cream and then topped with passionfruit buttercream in our signature ombre design. Need to Build Your Own Cake?.",250,"./assets/img/cakes/lemon/lemon-full.jpg","./assets/img/cakes/lemon/lemon-slice.jpg",1));
 cakeHouseList.push( new CakesHouse ("NE -O COOKIE CAKE",9,"Our rich devil’s food cake layered with a filling that tastes just like your favorite childhood cookie and topped with whipped cream and mini oreos.",250,"./assets/img/cakes/ne-o cookie/neo-full.jpg","./assets/img/cakes/ne-o cookie/neo-slice.jpeg",1));
-
 
 // Definiendo categorias
 
@@ -91,8 +89,8 @@ cakeBaseList.push( new CakesIngredients ("Vanilla Party",1,1,"Vanilla sponge cak
 cakeBaseList.push( new CakesIngredients ("Chocoloco",2,1,"Dobble chocolate sponge moist cake.",350));
 cakeBaseList.push( new CakesIngredients ("Red Velvet",3,1,"Classic and rich red velvet chocolate cake.",350));
 cakeBaseList.push( new CakesIngredients ("Carrot",4,1,"Classic sweet carrot cake.",350));
-cakeBaseList.push( new CakesIngredients ("Cacao Intense",5,1,"Intense cocoa cake with a pinch of salt.",250));
-cakeBaseList.push( new CakesIngredients ("Vanilla",6,1,"Simple vanilla sponge cake.",250));
+cakeBaseList.push( new CakesIngredients ("Cacao Intense",5,1,"Intense cocoa cake with a pinch of salt.",300));
+cakeBaseList.push( new CakesIngredients ("Vanilla",6,1,"Simple vanilla sponge cake.",200));
 
 // Definiendo coberturas
 
@@ -137,7 +135,6 @@ myCakeIngredients.push( new MyCakeIngredientInfo (" ",0,0,));
 myCakeIngredients.push( new MyCakeIngredientInfo (" ",0,0,));
 myCakeIngredients.push( new MyCakeIngredientInfo (" ",0,0,));
 myCakeIngredients.push( new MyCakeIngredientInfo (" ",0,0,));
-
 
 ////////////////////////////////////////////////////////////////////
 
@@ -247,23 +244,21 @@ const addBottons = $(".btn-add-cart");
 
 function addToCart() {
   const add = cakeHouseList.find(producto => producto.code == this.id);
-  if (add.code != null){
+  const search = cart.find(producto => producto.code == this.id);
+  if (search == undefined){
     cart.push (new CartProduct (add.name, add.code, add.price, add.description, add.quantity));
   } else {
-    for ( i = 0; i < cart.length; i++){
-      let quantity = parseInt(0);
-      console.log(add.code);
-      if (add.code === cart[i].code) {
-        cart[i].quantity++;
-      } else {
-        cart.push (new CartProduct (add.name, add.code, add.price, add.description, add.quantity));
-      }
-    }
+    search.quantity = search.quantity + 1;
   }
   console.log(cart);
-  cartTotalPrice = cartTotalPrice + (add.price * quantity);
-  console.log(cartTotalPrice);
+  console.log(add.price);
+  if ("totalPrice" in localStorage) {
+    let price = JSON.parse(localStorage.getItem("totalPrice"));
+    cartTotalPrice = price + (add.price * add.quantity);
+  }
   cartTotal();
+  localStorage.setItem("cart", JSON.stringify(cart));
+  localStorage.setItem("totalPrice",JSON.stringify(cartTotalPrice));
 }
 
 for (const botton of addBottons) {
@@ -322,8 +317,6 @@ function cakeQuantitySelector (){
 }
 
 
-/////////////////////////////////////////////////////////////////////////////////
-
 // ADD TO CART BUILDER BOTON 
 
 const addBottonBuilder = $(".btn-add-cart-builder");
@@ -331,7 +324,7 @@ const addBottonBuilder = $(".btn-add-cart-builder");
 // array con los id de los selectores
 const idsSelectors = ["base","filling","frosting","decoration","size"];
 
-// VALIDACION DE SELECTORES VACIOS1
+// VALIDACION DE SELECTORES VACIOS
 function selectEmptyValidaton () {
   for (const select of idsSelectors){
     let selection = "select-empty-" + select;
@@ -363,9 +356,13 @@ function addToCartBuilder() {
       let msn = "#select-empty-" + messege;
       $(msn).remove(); 
     }
-    cartTotalPrice = cartTotalPrice + cakeBuilderTotalPrice;
-    console.log(cartTotalPrice);
+    if ("totalPrice" in localStorage) {
+      let price = JSON.parse(localStorage.getItem("totalPrice"));
+      cartTotalPrice = price + cakeBuilderTotalPrice;;
+    }
     cartTotal()
+    localStorage.setItem("cart", JSON.stringify(cart));
+    localStorage.setItem("totalPrice",JSON.stringify(cartTotalPrice));
 }
 
 for (const botton of addBottonBuilder) {
@@ -399,6 +396,7 @@ function builderCakePrice () {
 // defino inicio de carrito del nav
 $("#cart-total-price").append(`<p class="total-price">$0</p>`);
 // precio total del carrito
+
 function cartTotal() {
   // remuevo precio viejo, agrego precio nuevo.
   $(".total-price").remove();
@@ -411,3 +409,21 @@ function resetBuilder() {
     $("#"+select).val() = 0;
   }
 }
+
+
+// SI EXISTE PRODUCTOS EN STORAGES LOS RECARGO
+
+$(document).ready(function(){
+  if ("cart" in localStorage) {
+    const arrayLiterales = JSON.parse(localStorage.getItem("cart"));
+    for (const literal of arrayLiterales){
+      cart.push(new CartProduct(literal.name, literal.code, literal.price, literal.description, literal.quantity));
+    }
+  }
+  if ("totalPrice" in localStorage) {
+    let price = JSON.parse(localStorage.getItem("totalPrice"));
+    console.log(price);
+    $(".total-price").remove();
+    $("#cart-total-price").append(`<p class="total-price">$${price}</p>`);
+  }
+})
