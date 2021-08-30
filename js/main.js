@@ -255,6 +255,8 @@ function addToCart() {
   if ("totalPrice" in localStorage) {
     let price = JSON.parse(localStorage.getItem("totalPrice"));
     cartTotalPrice = price + (add.price * add.quantity);
+  } else {
+    cartTotalPrice = cartTotalPrice + (add.price * add.quantity);
   }
   cartTotal();
   localStorage.setItem("cart", JSON.stringify(cart));
@@ -349,7 +351,7 @@ function addToCartBuilder() {
     let writeCakeText = $("#writeCakeText").val();
     myCakeIngredients[4] = new MyCakeIngredientInfo ("Write Text: " + writeCakeText , 0, 0 );
     let myCakeDescription =  myCakeIngredients;
-    cart.push(new CartProduct("Cake Builder",00,cakeBuilderTotalPrice,myCakeDescription));
+    cart.push(new CartProduct("Cake Builder",00,cakeBuilderTotalPrice,myCakeDescription,$("#quantity").val()));
     // Sumo el total al total del carro
     console.log(cart);   
     for (const messege of idsSelectors){
