@@ -325,3 +325,58 @@ Product cards
   background-color: #7ff0d4;
   
 }
+
+/** 
+  Cart
+**/
+
+.cart-container {
+  width: 100%;
+  position: absolute;
+  justify-content:flex-end;
+}
+
+.cart-nav-button {
+  text-decoration:none;
+  background:none;
+  border:none;
+}
+
+.cart-nav-button:hover{
+  color: red;
+}
+.cart-display {
+  position: relative;
+  background: white;
+  width:300px;
+  height:100vh;
+  display: none;
+}
+
+.cart-item-table {
+  display: flex;
+  flex-direction: column;
+}
+.cart-item {
+  display: flex;
+  padding-left: 5px;
+  align-items: center;
+  margin: 2px;
+  font-size:14px;
+}
+.btn-cart-quantity {
+  border: none;
+  background-color:black;
+  color:white;
+}
+
+.item-quantity-cart {
+  padding: 0px 10px 0px 10px;
+}
+
+.quantity-bottons-item {
+  background-color:rgb(240, 240, 240);
+  display:flex;
+  margin-left: 5px;
+  align-items: center;
+}

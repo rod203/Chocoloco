@@ -245,13 +245,15 @@ const addBottons = $(".btn-add-cart");
 function addToCart() {
   const add = cakeHouseList.find(producto => producto.code == this.id);
   const search = cart.find(producto => producto.code == this.id);
+  // si no esta el producto en el carro
   if (search == undefined){
+    // agrego producto
     cart.push (new CartProduct (add.name, add.code, add.price, add.description, add.quantity));
+    // cargo el producto al render del carrito nav
+    cartItems();
   } else {
     search.quantity = search.quantity + 1;
   }
-  console.log(cart);
-  console.log(add.price);
   if ("totalPrice" in localStorage) {
     let price = JSON.parse(localStorage.getItem("totalPrice"));
     cartTotalPrice = price + (add.price * add.quantity);
@@ -412,14 +414,15 @@ function resetBuilder() {
   }
 }
 
-
 // SI EXISTE PRODUCTOS EN STORAGES LOS RECARGO
 
 $(document).ready(function(){
   if ("cart" in localStorage) {
     const arrayLiterales = JSON.parse(localStorage.getItem("cart"));
     for (const literal of arrayLiterales){
-      cart.push(new CartProduct(literal.name, literal.code, literal.price, literal.description, literal.quantity));
+      // cargo todos los items del storage
+      cart.push(new CartProduct(literal.name, literal.code, literal.price, literal.description, literal.quantity)); 
+      $("#cart-count-table").append(cartItems());
     }
   }
   if ("totalPrice" in localStorage) {
@@ -429,3 +432,28 @@ $(document).ready(function(){
     $("#cart-total-price").append(`<p class="total-price">$${price}</p>`);
   }
 })
+
+
+// cart nav event
+$("#cart-nav-btn").click(function(){
+  $("#cart-display").toggle();
+});
+
+
+// CART POPUP FUNCTIONS
+function cartItems (){
+  for (const item of cart) {
+    if ($("#quantity-product-" + item.code) != undefined) {
+      $("#cart-count-table").append(`<p> ${item.name} 
+      <span class="badge bg-warning"> Pracio unitario: $ ${item.price}</span>
+      <span class=" badge bg-dark" id="quantity-product-${item.code}"> Cantidad: ${item.quantity}</span>
+      <a id="${item.code}" class="btn btn-info btn-add">+</a>
+      <a id="${item.code}" class="btn btn-warning btn-restar">-</a>
+      <a id="${item.code}" class="btn btn-danger btn-delete">x</a>
+      </p>`)
+    }else {
+      $("#quantity-product-" + item.code).remove();
+      $("#quantity-product-" + item.code).append(`<span class="badge bg-dark" id="quantity-product-${item.code}"> Cantidad: ${item.quantity}</span>`);
+    }
+  }
+}
