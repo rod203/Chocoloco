@@ -249,8 +249,6 @@ function addToCart() {
   if (search == undefined){
     // agrego producto
     cart.push (new CartProduct (add.name, add.code, add.price, add.description, add.quantity));
-    // cargo el producto al render del carrito nav
-    cartItems();
   } else {
     search.quantity = search.quantity + 1;
   }
@@ -263,6 +261,8 @@ function addToCart() {
   cartTotal();
   localStorage.setItem("cart", JSON.stringify(cart));
   localStorage.setItem("totalPrice",JSON.stringify(cartTotalPrice));
+  // cargo el producto al render del carrito nav
+  cartItems(search);
 }
 
 for (const botton of addBottons) {
@@ -422,7 +422,7 @@ $(document).ready(function(){
     for (const literal of arrayLiterales){
       // cargo todos los items del storage
       cart.push(new CartProduct(literal.name, literal.code, literal.price, literal.description, literal.quantity)); 
-      $("#cart-count-table").append(cartItems());
+      cartItems(literal);
     }
   }
   if ("totalPrice" in localStorage) {
@@ -441,19 +441,13 @@ $("#cart-nav-btn").click(function(){
 
 
 // CART POPUP FUNCTIONS
-function cartItems (){
-  for (const item of cart) {
-    if ($("#quantity-product-" + item.code) != undefined) {
-      $("#cart-count-table").append(`<p> ${item.name} 
-      <span class="badge bg-warning"> Pracio unitario: $ ${item.price}</span>
-      <span class=" badge bg-dark" id="quantity-product-${item.code}"> Cantidad: ${item.quantity}</span>
-      <a id="${item.code}" class="btn btn-info btn-add">+</a>
-      <a id="${item.code}" class="btn btn-warning btn-restar">-</a>
-      <a id="${item.code}" class="btn btn-danger btn-delete">x</a>
-      </p>`)
-    }else {
-      $("#quantity-product-" + item.code).remove();
-      $("#quantity-product-" + item.code).append(`<span class="badge bg-dark" id="quantity-product-${item.code}"> Cantidad: ${item.quantity}</span>`);
-    }
-  }
+function cartItems(item){
+  console.log(item);
+  let selector = $("#quantity-product-" + item.code);
+  console.log(selector);
+  $("#cart-count-table").append(`
+  <p id="product-${item.code}"> ${item.name} 
+    <span class=" bg-warning">$ ${item.price}</span>
+    <span class="quantity-bottons-item" id="quantity-product-${item.code}"> Cantidad: ${item.quantity}</span>
+  </p>`)
 }
