@@ -442,12 +442,15 @@ $("#cart-nav-btn").click(function(){
 
 // CART POPUP FUNCTIONS
 function cartItems(item){
-  console.log(item);
-  let selector = $("#quantity-product-" + item.code);
+  let selector = "#quantity-product-" + item.code;
   console.log(selector);
-  $("#cart-count-table").append(`
-  <p id="product-${item.code}"> ${item.name} 
+  let selectorDom = $(selector);
+  console.log(selectorDom);
+  if (selectorDom != undefined){
+    $("#cart-count-table").append(`
+    <p id="product-${item.code}"> ${item.name} 
     <span class=" bg-warning">$ ${item.price}</span>
     <span class="quantity-bottons-item" id="quantity-product-${item.code}"> Cantidad: ${item.quantity}</span>
-  </p>`)
+    </p>`)
+  }  
 }
