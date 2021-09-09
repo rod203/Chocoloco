@@ -442,15 +442,25 @@ $("#cart-nav-btn").click(function(){
 
 // CART POPUP FUNCTIONS
 function cartItems(item){
-  let selector = "#quantity-product-" + item.code;
-  console.log(selector);
-  let selectorDom = $(selector);
-  console.log(selectorDom);
-  if (selectorDom != undefined){
+  let itemCart = "#item-cart-" + item.code;
+  let itemCartDom = $(itemCart);
+  console.log(itemCartDom);
+  if (itemCartDom == undefined){
     $("#cart-count-table").append(`
-    <p id="product-${item.code}"> ${item.name} 
-    <span class=" bg-warning">$ ${item.price}</span>
-    <span class="quantity-bottons-item" id="quantity-product-${item.code}"> Cantidad: ${item.quantity}</span>
-    </p>`)
-  }  
+    <div id="item-cart-${item.code}">
+      <p id="product-${item.code}"> ${item.name} 
+        <span class=" bg-warning">$ ${item.price}</span>
+        <span class="quantity-bottons-item" id="quantity-product-${item.code}"> Cantidad: ${item.quantity}</span>
+      </p>
+    </div>`)
+  } else {
+    $(itemCartDom).remove();
+    $("#cart-count-table").append(`
+    <div id="item-cart-${item.code}">
+      <p id="product-${item.code}"> ${item.name} 
+        <span class=" bg-warning">$ ${item.price}</span>
+        <span class="quantity-bottons-item" id="quantity-product-${item.code}"> Cantidad: ${item.quantity}</span>
+      </p>
+    </div>`)
+  }
 }
