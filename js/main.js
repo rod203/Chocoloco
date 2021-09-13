@@ -263,6 +263,7 @@ function addToCart() {
   localStorage.setItem("totalPrice",JSON.stringify(cartTotalPrice));
   // cargo el producto al render del carrito nav
   cartItems(search);
+  console.log(cart);
 }
 
 for (const botton of addBottons) {
@@ -444,7 +445,6 @@ $("#cart-nav-btn").click(function(){
 function cartItems(item){
   let itemCart = "#item-cart-" + item.code;
   let itemCartDom = $(itemCart);
-  console.log(itemCartDom);
   if (itemCartDom == undefined){
     $("#cart-count-table").append(`
     <div id="item-cart-${item.code}">
