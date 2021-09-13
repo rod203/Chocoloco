@@ -445,7 +445,7 @@ $("#cart-nav-btn").click(function(){
 function cartItems(item){
   let itemCart = "#item-cart-" + item.code;
   let itemCartDom = $(itemCart);
-  if (itemCartDom == undefined){
+  if (itemCartDom == null){
     $("#cart-count-table").append(`
     <div id="item-cart-${item.code}">
       <p id="product-${item.code}"> ${item.name} 
