@@ -236,6 +236,33 @@ for (const size of cakeSizeList) {
 
 /////////////////////////////////////////////////////////////
 
+// CART POPUP FUNCTIONS
+
+function cartItems(item){
+  let itemCart = "#item-cart-" + item.code;
+  let itemCartDom = $(itemCart);
+  if (itemCartDom == undefined){
+    $("#cart-count-table").append(`
+    <div id="item-cart-${item.code}">
+      <p id="product-${item.code}"> ${item.name} 
+        <span class=" bg-warning">$ ${item.price}</span>
+        <span class="quantity-bottons-item" id="quantity-product-${item.code}"> Cantidad: ${item.quantity}</span>
+      </p>
+    </div>`)
+  } else {
+    $(itemCartDom).remove();
+    $("#cart-count-table").append(`
+    <div id="item-cart-${item.code}">
+      <p id="product-${item.code}"> ${item.name} 
+        <span class=" bg-warning">$ ${item.price}</span>
+        <span class="quantity-bottons-item" id="quantity-product-${item.code}"> Cantidad: ${item.quantity}</span>
+      </p>
+    </div>`)
+  }
+}
+
+/////////////////////////////////////////////////////////////
+
 // ADD TO CART BOTON 
 
 let cartTotalPrice = parseFloat(0);
@@ -249,8 +276,11 @@ function addToCart() {
   if (search == undefined){
     // agrego producto
     cart.push (new CartProduct (add.name, add.code, add.price, add.description, add.quantity));
+    // cargo el producto al render del carrito nav
+    cartItems(add);
   } else {
     search.quantity = search.quantity + 1;
+    cartItems(add);
   }
   if ("totalPrice" in localStorage) {
     let price = JSON.parse(localStorage.getItem("totalPrice"));
@@ -261,8 +291,7 @@ function addToCart() {
   cartTotal();
   localStorage.setItem("cart", JSON.stringify(cart));
   localStorage.setItem("totalPrice",JSON.stringify(cartTotalPrice));
-  // cargo el producto al render del carrito nav
-  cartItems(search);
+
   console.log(cart);
 }
 
@@ -272,9 +301,10 @@ for (const botton of addBottons) {
 
 /////////////////////////////////////////////////////////////
 
-// BUILDER
+// BUILDER CAKE
 
 // ACUMULO SELECCIONES DINAMICAMENTE EN CADA CAMBIO DE SELECCION
+
 function cakeBaseSelector (){
   let select = document.getElementById('base').value;
   // Busco opcion seleccionada
@@ -416,7 +446,6 @@ function resetBuilder() {
 }
 
 // SI EXISTE PRODUCTOS EN STORAGES LOS RECARGO
-
 $(document).ready(function(){
   if ("cart" in localStorage) {
     const arrayLiterales = JSON.parse(localStorage.getItem("cart"));
@@ -441,26 +470,3 @@ $("#cart-nav-btn").click(function(){
 });
 
 
-// CART POPUP FUNCTIONS
-function cartItems(item){
-  let itemCart = "#item-cart-" + item.code;
-  let itemCartDom = $(itemCart);
-  if (itemCartDom == null){
-    $("#cart-count-table").append(`
-    <div id="item-cart-${item.code}">
-      <p id="product-${item.code}"> ${item.name} 
-        <span class=" bg-warning">$ ${item.price}</span>
-        <span class="quantity-bottons-item" id="quantity-product-${item.code}"> Cantidad: ${item.quantity}</span>
-      </p>
-    </div>`)
-  } else {
-    $(itemCartDom).remove();
-    $("#cart-count-table").append(`
-    <div id="item-cart-${item.code}">
-      <p id="product-${item.code}"> ${item.name} 
-        <span class=" bg-warning">$ ${item.price}</span>
-        <span class="quantity-bottons-item" id="quantity-product-${item.code}"> Cantidad: ${item.quantity}</span>
-      </p>
-    </div>`)
-  }
-}

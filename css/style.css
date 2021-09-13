@@ -303,10 +303,12 @@ Product cards
 }
 .icon-reset {
   margin-right:5px;
+  display: flex;
+  justify-content: space-around;
 }
 .reset-selectors {
   margin: 0px;
-  padding: 0px;
+  padding-left: 5px;
   font-size: 12px;
 }
 .reset-link {
