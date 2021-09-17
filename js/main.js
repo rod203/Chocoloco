@@ -170,7 +170,6 @@ for (const producto of cakeHouseList) {
 // LLENAR OPCIONES DEL FORMULARIO MAKE YOUR CAKE
 
 // CAKE BASE
-
 const baseList = document.getElementById('base');
 
 for (const base of cakeBaseList) {
@@ -178,12 +177,10 @@ for (const base of cakeBaseList) {
   listElement.setAttribute("class", "selection-style");
   listElement.setAttribute("value", `${base.productCode}`);
   listElement.innerHTML = `${base.name} ($${base.price})`;
-
   baseList.appendChild(listElement);
 }
 
 // CAKE FILLINGS
-
 const fillingList = document.getElementById('filling');
 
 for (const filling of cakeFillingList) {
@@ -191,12 +188,10 @@ for (const filling of cakeFillingList) {
   listElement.setAttribute("class", "selection-style");
   listElement.setAttribute("value", `${filling.productCode}`);
   listElement.innerHTML = `${filling.name} ($${filling.price})`;
-
   fillingList.appendChild(listElement);
 }
 
 // CAKE FROSTINGS
-
 const frostingList = document.getElementById('frosting');
 
 for (const frosting of cakeFrostingList) {
@@ -204,7 +199,6 @@ for (const frosting of cakeFrostingList) {
   listElement.setAttribute("class", "selection-style");
   listElement.setAttribute("value", `${frosting.productCode}`);
   listElement.innerHTML = `${frosting.name} ($${frosting.price})`;
-
   frostingList.appendChild(listElement);
 }
 
@@ -217,12 +211,10 @@ for (const decoration of cakeDecorationList) {
   listElement.setAttribute("class", "selection-style");
   listElement.setAttribute("value", `${decoration.productCode}`);
   listElement.innerHTML = `${decoration.name} ($${decoration.price})`;
-
   decorationList.appendChild(listElement);
 }
 
 // CAKE SIZE
-
 const SizesList = document.getElementById('size');
 
 for (const size of cakeSizeList) {
@@ -230,14 +222,12 @@ for (const size of cakeSizeList) {
   listElement.setAttribute("class", "selection-style");
   listElement.setAttribute("value", `${size.code}`);
   listElement.innerHTML = `${size.name} ($${size.price})`;
-
   SizesList.appendChild(listElement);
 }
 
 /////////////////////////////////////////////////////////////
 
 // CART POPUP FUNCTIONS
-
 function cartItems(item){
   let itemCart = "#item-cart-" + item.code;
   let itemCartDom = $(itemCart);
@@ -247,33 +237,68 @@ function cartItems(item){
       <p id="product-${item.code}"> ${item.name} 
         <span class=" bg-warning">$ ${item.price}</span>
         <span class="quantity-bottons-item" id="quantity-product-${item.code}"> Cantidad: ${item.quantity}</span>
-        <button class="cart-control-btn" id="btn-rest">-</button>
-        <button class="cart-control-btn" id="btn-add">+</button>
-        <button class="cart-control-btn" id="btn-delete">x</button>
+        <button class="cart-control-btn" id="btn-rest-${item.code}">-</button>
+        <button class="cart-control-btn" id="btn-add-${item.code}">+</button>
+        <button class="cart-control-btn" id="btn-delete-${item.code}">x</button>
       </p>
     </div>`)
-    $("#btn-add").click(addCantidad(item.code));
-    $("#btn-delete").click(eliminarCarrito(item.code));
-    $("#btn-restar").click(restarCantidad(item.code));
+  $("#btn-add-"+item.code).click(function(){addCantidad(item.code)});
+  $("#btn-delete-"+item.code).click(function(){eliminarCarrito(item.code)});
+  $("#btn-rest-"+item.code).click(function(){restarCantidad(item.code)});
 }
+
+// BTN RESTAR CANTIDAD DE PRODUCTO
 function restarCantidad (item){
-
+  const itemSelected = cart.find(producto => producto.code == item);
+  let newQuantity = itemSelected.quantity - 1;
+  if (newQuantity == 0) {
+    $("#item-cart-"+itemSelected.code).remove();
+    let positionItem = cart.findIndex(p => p.id == itemSelected.id);
+    cart.splice(positionItem, 1);
+  }
+  itemSelected.quantity = newQuantity;
+  $("#quantity-product-"+item).html(`Cantidad: ${itemSelected.quantity}`);
+  let totalPrice = JSON.parse(localStorage.getItem("totalPrice"));
+  cartTotalPrice = totalPrice - itemSelected.price;
+  cartTotal();
+  localStorage.setItem("cart", JSON.stringify(cart));
+  localStorage.setItem("totalPrice",JSON.stringify(cartTotalPrice));
+  console.log(cart);
 }
 
+// AGREGO CANTIDAD DE PRODUCTO
 function addCantidad (item){
-
+  const itemSelected = cart.find(producto => producto.code == item);
+  itemSelected.quantity += 1;
+  localStorage.setItem("cart", JSON.stringify(cart));
+  $("#quantity-product-"+item).html(`Cantidad: ${itemSelected.quantity}`);
+  let totalPrice = JSON.parse(localStorage.getItem("totalPrice"));
+  cartTotalPrice = totalPrice + itemSelected.price;
+  cartTotal();
+  localStorage.setItem("cart", JSON.stringify(cart));
+  localStorage.setItem("totalPrice",JSON.stringify(cartTotalPrice));
+  console.log(cart);
 }
 
+// ELIMINAR PRODUCTO DEL CARRITO
 function eliminarCarrito(item) {
-
+  const itemSelected = cart.find(producto => producto.code == item);
+  let positionItem = cart.findIndex(p => p.id == itemSelected.id);
+  cart.splice(positionItem, 1);
+  $("#item-cart-"+itemSelected.code).remove();
+  let totalPrice = JSON.parse(localStorage.getItem("totalPrice"));
+  let totalPriceItem = itemSelected.price * itemSelected.quantity;
+  cartTotalPrice = totalPrice - totalPriceItem;
+  cartTotal();
+  localStorage.setItem("cart", JSON.stringify(cart));
+  localStorage.setItem("totalPrice",JSON.stringify(cartTotalPrice));
+  console.log(cart);
 }
 
 /////////////////////////////////////////////////////////////
 
 // ADD TO CART BOTON 
-
 let cartTotalPrice = parseFloat(0);
-
 const addBottons = $(".btn-add-cart");
 
 function addToCart() {
@@ -311,7 +336,6 @@ for (const botton of addBottons) {
 // BUILDER CAKE
 
 // ACUMULO SELECCIONES DINAMICAMENTE EN CADA CAMBIO DE SELECCION
-
 function cakeBaseSelector (){
   let select = document.getElementById('base').value;
   // Busco opcion seleccionada
@@ -360,7 +384,6 @@ function cakeQuantitySelector (){
 
 
 // ADD TO CART BUILDER BOTON 
-
 const addBottonBuilder = $(".btn-add-cart-builder");
 
 // array con los id de los selectores
@@ -384,6 +407,7 @@ function selectEmptyValidaton () {
 }
 
 let cakeBuilderTotalPrice = parseFloat(0);
+
 // funcion para agregar al carrito del boton builder cake
 function addToCartBuilder() {
     selectEmptyValidaton();
