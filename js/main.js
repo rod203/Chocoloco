@@ -241,24 +241,31 @@ for (const size of cakeSizeList) {
 function cartItems(item){
   let itemCart = "#item-cart-" + item.code;
   let itemCartDom = $(itemCart);
-  if (itemCartDom == undefined){
-    $("#cart-count-table").append(`
+  $(itemCartDom).remove();
+  $("#cart-count-table").append(`
     <div id="item-cart-${item.code}">
       <p id="product-${item.code}"> ${item.name} 
         <span class=" bg-warning">$ ${item.price}</span>
         <span class="quantity-bottons-item" id="quantity-product-${item.code}"> Cantidad: ${item.quantity}</span>
+        <button class="cart-control-btn" id="btn-rest">-</button>
+        <button class="cart-control-btn" id="btn-add">+</button>
+        <button class="cart-control-btn" id="btn-delete">x</button>
       </p>
     </div>`)
-  } else {
-    $(itemCartDom).remove();
-    $("#cart-count-table").append(`
-    <div id="item-cart-${item.code}">
-      <p id="product-${item.code}"> ${item.name} 
-        <span class=" bg-warning">$ ${item.price}</span>
-        <span class="quantity-bottons-item" id="quantity-product-${item.code}"> Cantidad: ${item.quantity}</span>
-      </p>
-    </div>`)
-  }
+    $("#btn-add").click(addCantidad(item.code));
+    $("#btn-delete").click(eliminarCarrito(item.code));
+    $("#btn-restar").click(restarCantidad(item.code));
+}
+function restarCantidad (item){
+
+}
+
+function addCantidad (item){
+
+}
+
+function eliminarCarrito(item) {
+
 }
 
 /////////////////////////////////////////////////////////////
@@ -276,11 +283,12 @@ function addToCart() {
   if (search == undefined){
     // agrego producto
     cart.push (new CartProduct (add.name, add.code, add.price, add.description, add.quantity));
-    // cargo el producto al render del carrito nav
+    // renderizo el producto nuevo en le carrito
     cartItems(add);
   } else {
     search.quantity = search.quantity + 1;
-    cartItems(add);
+    // renderizo el producto ya existente con nueva cantidad
+    cartItems(search);
   }
   if ("totalPrice" in localStorage) {
     let price = JSON.parse(localStorage.getItem("totalPrice"));
@@ -291,7 +299,6 @@ function addToCart() {
   cartTotal();
   localStorage.setItem("cart", JSON.stringify(cart));
   localStorage.setItem("totalPrice",JSON.stringify(cartTotalPrice));
-
   console.log(cart);
 }
 
@@ -385,8 +392,7 @@ function addToCartBuilder() {
     myCakeIngredients[4] = new MyCakeIngredientInfo ("Write Text: " + writeCakeText , 0, 0 );
     let myCakeDescription =  myCakeIngredients;
     cart.push(new CartProduct("Cake Builder",00,cakeBuilderTotalPrice,myCakeDescription,$("#quantity").val()));
-    // Sumo el total al total del carro
-    console.log(cart);   
+    // Sumo el total al total del carro 
     for (const messege of idsSelectors){
       let msn = "#select-empty-" + messege;
       $(msn).remove(); 
@@ -394,7 +400,12 @@ function addToCartBuilder() {
     if ("totalPrice" in localStorage) {
       let price = JSON.parse(localStorage.getItem("totalPrice"));
       cartTotalPrice = price + cakeBuilderTotalPrice;;
+    } else {
+      cartTotalPrice = price + cakeBuilderTotalPrice;;
     }
+    // renderizo el producto nuevo en le carrito
+    const search = cart.find(producto => producto.code == 00);
+    cartItems(search);
     cartTotal()
     localStorage.setItem("cart", JSON.stringify(cart));
     localStorage.setItem("totalPrice",JSON.stringify(cartTotalPrice));
@@ -462,7 +473,6 @@ $(document).ready(function(){
     $("#cart-total-price").append(`<p class="total-price">$${price}</p>`);
   }
 })
-
 
 // cart nav event
 $("#cart-nav-btn").click(function(){
