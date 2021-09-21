@@ -1,0 +1,83 @@
+[
+  {
+    "name": "BIRTHDAY CAKE",
+    "code": 1,
+    "description": "Vanilla sponge cake with confetti sprinkles baked in. Filled with vanilla whipped cream and frosted with a funfetti buttercream (confetti sprinkles mixed with buttercream). Decorated naked with a few jimmies sprinkled on top.",
+    "price": 250,
+    "image1": "./assets/img/cakes/birtday/birthday-full.jpeg",
+    "image2": "./assets/img/cakes/birtday/birthday-slice.jpeg",
+    "quantity": 1
+  },
+  {
+    "name": "STRAWBERRY CAKE",
+    "code": 2,
+    "description": "Our classic vanilla chiffon cake layered with fresh strawberry cream and then topped with strawberry buttercream, in our signature ombre design.",
+    "price": 200,
+    "image1": "./assets/img/cakes/strawberry/strawberry-full.jpg",
+    "image2": "./assets/img/cakes/strawberry/strawberry-slice.jpg",
+    "quantity": 1
+  },
+  {
+    "name": "FULL COLOR CAKE",
+    "code": 3,
+    "description": "Our sinfully delicious devil's food cake layered with whipped cream, topped with vanilla buttercream, and finished with colorful jimmies.",
+    "price": 400,
+    "image1": "./assets/img/cakes/devil party/devilparty-full.jpg",
+    "image2": "./assets/img/cakes/devil party/devilparty-slice.jpg",
+    "quantity": 1
+  },
+  {
+    "name": "SALTED CARAMEL CAKE",
+    "code": 4,
+    "description": "Our sinfully delicious devil's food cake layered with burnt caramel Bavarian, and then topped with caramel buttercream. In a grand finale, we drizzle the top with ganache and Maldon salt.",
+    "price": 250,
+    "image1": "./assets/img/cakes/salted caramel/saltedcaramel-full.jpg",
+    "image2": "./assets/img/cakes/salted caramel/saltedcaramel-slice.jpg",
+    "quantity": 1
+  },
+  {
+    "name": "GOURMAND",
+    "code": 5,
+    "description": "Our sinfully delicious devil's food cake layered and topped with decadent E Guittard 81% chocolate frosting.",
+    "price": 30,
+    "image1": "./assets/img/cakes/gourmand/gourmand-full.jpg",
+    "image2": "./assets/img/cakes/gourmand/gourmand-slice.jpg",
+    "quantity": 1
+  },
+  {
+    "name": "RED VELVET CAKE",
+    "code": 6,
+    "description": "Our rich red velvet chocolate cake layered and topped with cream cheese icing.",
+    "price": 400,
+    "image1": "./assets/img/cakes/red velvet/redvelve-full.jpg",
+    "image2": "./assets/img/cakes/red velvet/redvelve-slice.jpg",
+    "quantity": 1
+  },
+  {
+    "name": "CARROT CAKE",
+    "code": 7,
+    "description": "Carrot Cake studded with pineapple, raisins and walnuts — then layered and topped with cream cheese icing. (It counts as a serving of veggies!).",
+    "price": 350,
+    "image1": "./assets/img/cakes/carrot/carrot-full.jpeg",
+    "image2": "./assets/img/cakes/carrot/carrot-slice.jpeg",
+    "quantity": 1
+  },
+  {
+    "name": "LEMON PASSIONFRUIT CAKE",
+    "code": 8,
+    "description": "Our classic vanilla chiffon cake layered with lemon whipped cream and then topped with passionfruit buttercream in our signature ombre design. Need to Build Your Own Cake?.",
+    "price": 320,
+    "image1": "./assets/img/cakes/lemon/lemon-full.jpg",
+    "image2": "./assets/img/cakes/lemon/lemon-slice.jpg",
+    "quantity": 1
+  },
+  {
+    "name": "NE-O COOKIE CAKE",
+    "code": 9,
+    "description": "Our rich devil’s food cake layered with a filling that tastes just like your favorite childhood cookie and topped with whipped cream and mini oreos.",
+    "price": 300,
+    "image1": "./assets/img/cakes/ne-o cookie/neo-full.jpg",
+    "image2": "./assets/img/cakes/ne-o cookie/neo-slice.jpeg",
+    "quantity": 1
+  }
+]

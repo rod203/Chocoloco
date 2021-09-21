@@ -64,6 +64,8 @@ const cakeSizeList = [];
 const cart = [];
 const myCakeIngredients = [];
 
+
+
 // Definiendo productos completos
 
 cakeHouseList.push( new CakesHouse ("BIRTHDAY CAKE",1,"Vanilla sponge cake with confetti sprinkles baked in. Filled with vanilla whipped cream and frosted with a funfetti buttercream (confetti sprinkles mixed with buttercream). Decorated naked with a few jimmies sprinkled on top.",250,"./assets/img/cakes/birtday/birthday-full.jpeg","./assets/img/cakes/birtday/birthday-slice.jpeg",1));
@@ -144,26 +146,61 @@ myCakeIngredients.push( new MyCakeIngredientInfo (" ",0,0,));
 const productList = document.getElementById('products-list');
 
 // CREAR CARDS AUTOMATICAS
-for (const producto of cakeHouseList) {
-  let card = document.createElement("div");
-  card.setAttribute("class", "col-md-6 col-sm-6 col-lg-4");
-  card.innerHTML =`
-    <div class="product-grid">
-      <div class="product-image">
-        <a href="#" class="image">
-          <img class="pic-1" src="${producto.image1}">
-          <img class="pic-2" src="${producto.image2}">
-        </a>
-    </div>
-    <div class="product-content">
-      <h3 class="title">
-          <a href="#">${producto.name}</a>
-      </h3>
-      <div class="price">$${producto.price}</div>
-      <button type="button" id="${producto.code}" class="btn btn-outline-primary product-links btn-add-cart">Add to cart</button>
-    </div>`;
-  productList.appendChild(card);
-}
+
+// //Declaramos la url que vamos a usar para el GET
+const URLGET = "./json/cakes.json"
+
+let productos = [];
+$.get(URLGET, function (respuesta, estado) {
+      if(estado === "success"){
+        for (const producto of respuesta) {
+          productos = respuesta;
+          let card = document.createElement("div");
+          card.setAttribute("class", "col-md-6 col-sm-6 col-lg-4");
+          card.innerHTML =`
+            <div class="product-grid">
+              <div class="product-image">
+                <a href="#" class="image">
+                  <img class="pic-1" src="${producto.image1}">
+                  <img class="pic-2" src="${producto.image2}">
+                </a>
+            </div>
+            <div class="product-content">
+              <h3 class="title">
+                  <a href="#">${producto.name}</a>
+              </h3>
+              <div class="price">$${producto.price}</div>
+              <button type="button" id="${producto.code}" class="btn btn-outline-primary product-links btn-add-cart">Add to cart</button>
+            </div>`;
+          productList.appendChild(card);
+        }
+      }
+}).done(()=>{
+  for(const prod of productos){
+    $(prod.code).click(addToCart());
+  }
+})
+
+// for (const producto of cakeHouseList) {
+//   let card = document.createElement("div");
+//   card.setAttribute("class", "col-md-6 col-sm-6 col-lg-4");
+//   card.innerHTML =`
+//     <div class="product-grid">
+//       <div class="product-image">
+//         <a href="#" class="image">
+//           <img class="pic-1" src="${producto.image1}">
+//           <img class="pic-2" src="${producto.image2}">
+//         </a>
+//     </div>
+//     <div class="product-content">
+//       <h3 class="title">
+//           <a href="#">${producto.name}</a>
+//       </h3>
+//       <div class="price">$${producto.price}</div>
+//       <button type="button" id="${producto.code}" class="btn btn-outline-primary product-links btn-add-cart">Add to cart</button>
+//     </div>`;
+//   productList.appendChild(card);
+// }
 
 ////////////////////////////////////////////////////////////////////
 
@@ -293,6 +330,15 @@ function eliminarCarrito(item) {
   localStorage.setItem("cart", JSON.stringify(cart));
   localStorage.setItem("totalPrice",JSON.stringify(cartTotalPrice));
   console.log(cart);
+  emptyCart();
+}
+
+function emptyCart() {
+  if (cart.length == 0){
+    $("#cart-count-table").append(`<div class="cart-empty">CARRITO VACIO</div>`)
+  } else {
+    $(".cart-empty").remove();
+  }
 }
 
 /////////////////////////////////////////////////////////////
@@ -322,6 +368,7 @@ function addToCart() {
     cartTotalPrice = cartTotalPrice + (add.price * add.quantity);
   }
   cartTotal();
+  emptyCart();
   localStorage.setItem("cart", JSON.stringify(cart));
   localStorage.setItem("totalPrice",JSON.stringify(cartTotalPrice));
   console.log(cart);
@@ -496,6 +543,7 @@ $(document).ready(function(){
     $(".total-price").remove();
     $("#cart-total-price").append(`<p class="total-price">$${price}</p>`);
   }
+  emptyCart();
 })
 
 // cart nav event
