@@ -147,7 +147,7 @@ const productList = document.getElementById('products-list');
 
 // CREAR CARDS AUTOMATICAS
 // //Declaramos la url que vamos a usar para el GET
-const URLGET = "json/cakes.json"
+const URLGET = "json/cakes.JSON"
 let productos = [];
 $.get(URLGET, function (respuesta, estado) {
       if(estado === "success"){
@@ -278,6 +278,7 @@ function restarCantidad (item){
   let totalPrice = JSON.parse(localStorage.getItem("totalPrice"));
   cartTotalPrice = totalPrice - itemSelected.price;
   cartTotal();
+  emptyCart();
   localStorage.setItem("cart", JSON.stringify(cart));
   localStorage.setItem("totalPrice",JSON.stringify(cartTotalPrice));
   console.log(cart);
