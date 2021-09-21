@@ -177,7 +177,7 @@ $.get(URLGET, function (respuesta, estado) {
       }
 }).done(()=>{
   for(const prod of productos){
-    $(prod.code).click(addToCart());
+    $("#"+prod.code).click(addToCart);
   }
 })
 
