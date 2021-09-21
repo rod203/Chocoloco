@@ -320,7 +320,9 @@ function addCantidad (item){
 // ELIMINAR PRODUCTO DEL CARRITO
 function eliminarCarrito(item) {
   const itemSelected = cart.find(producto => producto.code == item);
-  let positionItem = cart.findIndex(p => p.id == itemSelected.id);
+  console.log(itemSelected.code);
+  let positionItem = cart.findIndex(p => p.code == itemSelected.code);
+  console.log(positionItem);
   cart.splice(positionItem, 1);
   $("#item-cart-"+itemSelected.code).remove();
   let totalPrice = JSON.parse(localStorage.getItem("totalPrice"));
