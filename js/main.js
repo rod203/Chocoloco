@@ -177,7 +177,8 @@ $.get(URLGET, function (respuesta, estado) {
       }
 }).done(()=>{
   for(const prod of productos){
-    $("#btn-add-"+prod.code).click(addToCart);
+    let prodCode = prod.code;
+    $("#btn-add-"+prod.code).click(function(){addToCart(prodCode)});
   }
 })
 
@@ -328,13 +329,14 @@ function emptyCart() {
 let cartTotalPrice = parseFloat(0);
 const addBottons = $(".btn-add-cart");
 
-function addToCart() {
-  const add = cakeHouseList.find(producto => producto.code == this.id);
-  const search = cart.find(producto => producto.code == this.id);
+function addToCart(itemCode) {
+  const add = cakeHouseList.find(producto => producto.code == itemCode);
+  console.log(add);
+  const search = cart.find(producto => producto.code == itemCode);
   // si no esta el producto en el carro
   if (search == undefined){
     // agrego producto
-    cart.push (new CartProduct (add.name, add.code, add.price, add.description, add.quantity));
+    cart.push (new CartProduct(add.name, add.code, add.price, add.description, add.quantity));
     // renderizo el producto nuevo en le carrito
     cartItems(add);
   } else {
