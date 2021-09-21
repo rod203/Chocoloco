@@ -146,9 +146,8 @@ myCakeIngredients.push( new MyCakeIngredientInfo (" ",0,0,));
 const productList = document.getElementById('products-list');
 
 // CREAR CARDS AUTOMATICAS
-
 // //Declaramos la url que vamos a usar para el GET
-const URLGET = "../json/cakes.json"
+const URLGET = "json/cakes.json"
 
 let productos = [];
 $.get(URLGET, function (respuesta, estado) {
@@ -180,27 +179,6 @@ $.get(URLGET, function (respuesta, estado) {
     $("#"+prod.code).click(addToCart);
   }
 })
-
-// for (const producto of cakeHouseList) {
-//   let card = document.createElement("div");
-//   card.setAttribute("class", "col-md-6 col-sm-6 col-lg-4");
-//   card.innerHTML =`
-//     <div class="product-grid">
-//       <div class="product-image">
-//         <a href="#" class="image">
-//           <img class="pic-1" src="${producto.image1}">
-//           <img class="pic-2" src="${producto.image2}">
-//         </a>
-//     </div>
-//     <div class="product-content">
-//       <h3 class="title">
-//           <a href="#">${producto.name}</a>
-//       </h3>
-//       <div class="price">$${producto.price}</div>
-//       <button type="button" id="${producto.code}" class="btn btn-outline-primary product-links btn-add-cart">Add to cart</button>
-//     </div>`;
-//   productList.appendChild(card);
-// }
 
 ////////////////////////////////////////////////////////////////////
 
@@ -547,6 +525,7 @@ $(document).ready(function(){
     $("#cart-total-price").append(`<p class="total-price">$${price}</p>`);
   }
   emptyCart();
+  
 })
 
 // cart nav event
