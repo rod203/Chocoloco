@@ -159,11 +159,30 @@ $.get(URLGET, function (respuesta, estado) {
           card.setAttribute("class", "col-md-6 col-sm-6 col-lg-4");
           card.innerHTML =`
             <div class="product-grid">
+            
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    ...
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                  </div>
+                </div>
+              </div>
+            </div>
               <div class="product-image">
-                <a href="#" class="image">
+                <div class="image">
                   <img class="pic-1" src="${producto.image1}">
                   <img class="pic-2" src="${producto.image2}">
-                </a>
+                </div>
             </div>
             <div class="product-content">
               <h3 class="title">

@@ -39,7 +39,7 @@
     "name": "GOURMAND",
     "code": 5,
     "description": "Our sinfully delicious devil's food cake layered and topped with decadent E Guittard 81% chocolate frosting.",
-    "price": 30,
+    "price": 300,
     "image1": "./assets/img/cakes/gourmand/gourmand-full.jpg",
     "image2": "./assets/img/cakes/gourmand/gourmand-slice.jpg",
     "quantity": 1
