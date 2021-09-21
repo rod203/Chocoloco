@@ -148,7 +148,7 @@ const productList = document.getElementById('products-list');
 // CREAR CARDS AUTOMATICAS
 
 // //Declaramos la url que vamos a usar para el GET
-const URLGET = "./json/cakes.json"
+const URLGET = "../json/cakes.json"
 
 let productos = [];
 $.get(URLGET, function (respuesta, estado) {
@@ -349,6 +349,7 @@ const addBottons = $(".btn-add-cart");
 
 function addToCart() {
   const add = cakeHouseList.find(producto => producto.code == this.id);
+  console.log(add);
   const search = cart.find(producto => producto.code == this.id);
   // si no esta el producto en el carro
   if (search == undefined){
