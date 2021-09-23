@@ -153,44 +153,52 @@ $.get(URLGET, function (respuesta, estado) {
       if(estado === "success"){
         for (const producto of respuesta) {
           cakeHouseList.push( new CakesHouse (producto.name, producto.code, producto.description, producto.price, producto.image1, producto.image2,producto.quantity));
-          console.log(cakeHouseList);
           productos = respuesta;
           let card = document.createElement("div");
           card.setAttribute("class", "col-md-6 col-sm-6 col-lg-4");
           card.innerHTML =`
             <div class="product-grid">
+              <div class="product-image">
+                  <div class="view-element">
+                    <button type="button" class="btn btn-primary btn-viewmore" data-bs-toggle="modal" data-bs-target="#modal-${producto.code}">VIEW MORE</button>
+                    <div class="image">
+                      <img class="pic-1" src="${producto.image1}">
+                      <img class="pic-2" src="${producto.image2}">
+                    </div>
+                  </div>
+              </div>
+            <div class="product-content">
+              <h3 class="title">${producto.name}
+              </h3>
+              <div class="price">$${producto.price}</div>
+              <button type="button" id="btn-add-${producto.code}" class="btn btn-outline-primary product-links btn-add-cart">Add to cart</button>
+            </div>
             
             <!-- Modal -->
-            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-              <div class="modal-dialog">
+            <div class="modal fade" id="modal-${producto.code}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog modal-products">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">${producto.name}</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
-                  <div class="modal-body">
-                    ...
+                  <div class="modal-body product-modal">
+                    <div class="product-image-modal">
+                      <img class="product-image-modal__mod" src="${producto.image1}">
+                    </div>
+                    <div class="product-description-modal">
+                      <p>${producto.description}</p>
+                      <p><b>Price:</b> $${producto.price}</p>
+                    </div>
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
+                    <button id="btn-add-${producto.code}-modal" type="button" class="btn btn-primary">Add To Cart</button>
                   </div>
                 </div>
               </div>
             </div>
-              <div class="product-image">
-                <div class="image">
-                  <img class="pic-1" src="${producto.image1}">
-                  <img class="pic-2" src="${producto.image2}">
-                </div>
-            </div>
-            <div class="product-content">
-              <h3 class="title">
-                  <a href="#">${producto.name}</a>
-              </h3>
-              <div class="price">$${producto.price}</div>
-              <button type="button" id="btn-add-${producto.code}" class="btn btn-outline-primary product-links btn-add-cart">Add to cart</button>
-            </div>`;
+            <!-- MODAL END -->`;
           productList.appendChild(card);
         }
       }
@@ -198,6 +206,7 @@ $.get(URLGET, function (respuesta, estado) {
   for(const prod of productos){
     let prodCode = prod.code;
     $("#btn-add-"+prod.code).click(function(){addToCart(prodCode)});
+    $("#btn-add-"+prod.code+"-modal").click(function(){addToCart(prodCode)});
   }
 })
 
@@ -300,7 +309,6 @@ function restarCantidad (item){
   emptyCart();
   localStorage.setItem("cart", JSON.stringify(cart));
   localStorage.setItem("totalPrice",JSON.stringify(cartTotalPrice));
-  console.log(cart);
 }
 
 // AGREGO CANTIDAD DE PRODUCTO
@@ -314,7 +322,6 @@ function addCantidad (item){
   cartTotal();
   localStorage.setItem("cart", JSON.stringify(cart));
   localStorage.setItem("totalPrice",JSON.stringify(cartTotalPrice));
-  console.log(cart);
 }
 
 // ELIMINAR PRODUCTO DEL CARRITO
@@ -331,7 +338,6 @@ function eliminarCarrito(item) {
   cartTotal();
   localStorage.setItem("cart", JSON.stringify(cart));
   localStorage.setItem("totalPrice",JSON.stringify(cartTotalPrice));
-  console.log(cart);
   emptyCart();
 }
 
@@ -392,8 +398,6 @@ function cakeBaseSelector (){
   const ingredient = cakeBaseList.find(product => product.productCode == select);
   // Cargo los datos del ingrediente al array
   myCakeIngredients[0] = new MyCakeIngredientInfo (ingredient.name,ingredient.productCode,ingredient.price);
-  $("#select-empty-base").remove();
-
 }
 function cakeFillingSelector (){
   let select = document.getElementById('filling').value;
@@ -432,57 +436,35 @@ function cakeQuantitySelector (){
   myCakeIngredients[6] = new MyCakeIngredientInfo ("Quantity: " + select,99, select );
 }
 
-
 // ADD TO CART BUILDER BOTON 
 const addBottonBuilder = $(".btn-add-cart-builder");
-
 // array con los id de los selectores
 const idsSelectors = ["base","filling","frosting","decoration","size"];
-
-// VALIDACION DE SELECTORES VACIOS
-function selectEmptyValidaton () {
-  for (const select of idsSelectors){
-    let selection = "select-empty-" + select;
-    if ($("#"+select).val() != "0"){
-    $("#"+selection).remove();
-  } else {
-    let selectorFather = select + "-selector";
-    let getIn = document.getElementById("base-selector");
-    let message = document.createElement("div");
-    message.setAttribute("id",selection);
-    message.innerHTML = `<p class="alert-selector-empty">Pleace select an option.</p>`
-    getIn.appendChild(message);
-    }
-  }
-}
-
 let cakeBuilderTotalPrice = parseFloat(0);
 
 // funcion para agregar al carrito del boton builder cake
 function addToCartBuilder() {
-    selectEmptyValidaton();
-    // armo el array del producto del carro
-    let writeCakeText = $("#writeCakeText").val();
-    myCakeIngredients[4] = new MyCakeIngredientInfo ("Write Text: " + writeCakeText , 0, 0 );
-    let myCakeDescription =  myCakeIngredients;
-    cart.push(new CartProduct("Cake Builder",00,cakeBuilderTotalPrice,myCakeDescription,$("#quantity").val()));
-    // Sumo el total al total del carro 
-    for (const messege of idsSelectors){
-      let msn = "#select-empty-" + messege;
-      $(msn).remove(); 
-    }
-    if ("totalPrice" in localStorage) {
+      const BuilderCakeList = cart.filter(product => product.name == "Cake Builder");
+      let newCode = BuilderCakeList.length * 10;
+      // armo el array del producto del carro
+      let writeCakeText = $("#writeCakeText").val();
+      myCakeIngredients[4] = new MyCakeIngredientInfo ("Write Text: " + writeCakeText , 0, 0 );
+      let myCakeDescription =  myCakeIngredients;
+      cart.push(new CartProduct("Cake Builder",newCode,cakeBuilderTotalPrice,myCakeDescription,$("#quantity").val()));
+      // Sumo el total al total del carro 
       let price = JSON.parse(localStorage.getItem("totalPrice"));
-      cartTotalPrice = price + cakeBuilderTotalPrice;;
-    } else {
-      cartTotalPrice = price + cakeBuilderTotalPrice;;
-    }
-    // renderizo el producto nuevo en le carrito
-    const search = cart.find(producto => producto.code == 00);
-    cartItems(search);
-    cartTotal()
-    localStorage.setItem("cart", JSON.stringify(cart));
-    localStorage.setItem("totalPrice",JSON.stringify(cartTotalPrice));
+      if ("totalPrice" in localStorage) {
+        cartTotalPrice = price + cakeBuilderTotalPrice;;
+      } else {
+        cartTotalPrice = price + cakeBuilderTotalPrice;;
+      }
+      console.log(cart);
+      const newBuild = cart.find(product => product.code == newCode);
+      cartItems(newBuild);
+      emptyCart();
+      cartTotal();
+      localStorage.setItem("cart", JSON.stringify(cart));
+      localStorage.setItem("totalPrice",JSON.stringify(cartTotalPrice));
 }
 
 for (const botton of addBottonBuilder) {
