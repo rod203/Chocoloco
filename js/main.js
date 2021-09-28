@@ -523,7 +523,7 @@ function btnFinalOrder(){
   } else {
       $("#end-order").html(`
       <button type="button" class="delete-cart btn-dark" id="delete-cart-btn" onclick="clearCart()">DELET CART</button>
-      <button id="final-order-btn" type="button" class="btn btn-danger btn-finalize" data-bs-toggle="modal" data-bs-target="#finalize-order-btn">CHECK OUT</button>
+      <button onclick="printOrder()" id="final-order-btn" type="button" class="btn btn-danger btn-finalize" data-bs-toggle="modal" data-bs-target="#finalize-order-btn">CHECK OUT</button>
       `);
     }
 }
@@ -539,3 +539,12 @@ function clearCart() {
   localStorage.clear();
   location.reload();
 }
+
+function printOrder (){
+    $("#order-print-final").append(`
+      <div class="print-product-container">
+        <p class="print-product-txt">Are you sure you want to confirm the order?</p>
+      </div>
+    `);
+}
+

@@ -445,6 +445,9 @@ Product cards
   justify-content: flex-end;
   padding-top:10px;
 }
+.print-product-txt {
+  margin:20px;
+}
 .btn-viewmore {
   position: absolute;
 }
