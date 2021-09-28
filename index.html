@@ -34,39 +34,22 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="./pages/builder.html">Make Your Cake</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="./pages/cart.html">Cart</a>
-              </li>
-              <li class="nav-item">
                 <a class="nav-link" href="./pages/about.html">About</a>
               </li>
             </ul>
           </div>
           <div class="cart-nav">
-            <button class="cart-nav-button" id="cart-nav-btn">
+            <button class="cart-nav-button" id="cart-nav-btn" data-bs-toggle="modal" data-bs-target="#cart-modal">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-bag" viewBox="0 0 16 16">
-                <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z"/>
-                </svg>
-                <div id="cart-total-price" class="cart-total-nav">
+              <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z"/>
+              </svg>
+              <div id="cart-total-price" class="cart-total-nav">
               </div>
             </button>
           </div>
         </div>
       </nav>
     </div>
-    <!-- CART -->
-    <div class="row cart-container" id="cart-nav">
-      <div class="col-4 cart-display p-2" id="cart-display">
-        <div class="cart-text">
-          <h2 class="title-section">My Cart</h2>
-        </div>
-        <div id="cart-count-table" class="cart-item-table">
-        </div>
-      </div>
-    </div>
-  <!-- CART END -->
   </div>
   <!-- NAV END -->
   <!-- BANNER -->
@@ -82,7 +65,54 @@
     </div>
   </div>
   <!-- BANNER END -->
-
+  <!-- CART MODAL -->
+  <div class="modal modal-right fade" id="cart-modal" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+              <!-- CART -->
+              <div class="cart-text">
+                <h2 class="title-section">Cart</h2>
+                </div>
+                <div id="cart-count-table" class="cart-item-table">
+                </div>
+                <div id="cart-total-price-modal" class="cart-total-nav">
+                </div>
+                <div id="end-order" class="end-order-container">
+                </div>
+              </div>
+              <!-- CART END -->
+        </div>
+        <div class="modal-footer" id="finalize-order-content">
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- ORDER MODAL PRINT -->
+  <div id="print-order">
+    <!-- FINAL OREDER MODAL -->
+    <div class="modal fade" id="finalize-order-btn" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-products">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">HEY YOU!</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body product-modal">
+            
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">CANCEL</button>
+            <button type="button" id="success-btn" class="btn btn-danger" data-bs-dismiss="modal">LETS DO IT!</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- MODAL END -->
+  </div>
   <!-- CAKE BUILDER -->
   <div class="container">
     <div class="row builder-container">

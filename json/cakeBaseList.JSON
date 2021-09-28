@@ -1,0 +1,44 @@
+[
+  {
+    "name": "Vanilla Party",
+    "productCode": 1,
+    "category": 1,
+    "description": "Vanilla sponge cake with confetti sprinkles baked in.",
+    "price": "350"
+  },
+  {
+    "name": "Chocoloco",
+    "productCode": 2,
+    "category": 1,
+    "description": "Dobble chocolate sponge moist cake.",
+    "price": "350"
+  },
+  {
+    "name": "Red Velvet",
+    "productCode": 3,
+    "category": 1,
+    "description": "Classic and rich red velvet chocolate cake.",
+    "price": "350"
+  },
+  {
+    "name": "Carrot",
+    "productCode": 4,
+    "category": 1,
+    "description": "Classic sweet carrot cake.",
+    "price": "300"
+  },
+  {
+    "name": "Cacao Intense",
+    "productCode": 5,
+    "category": 1,
+    "description": "Intense cocoa cake with a pinch of salt.",
+    "price": "300"
+  },
+  {
+    "name": "Vanilla",
+    "productCode": 6,
+    "category": 1,
+    "description": "Simple vanilla sponge cake.",
+    "price": "200"
+  }
+]

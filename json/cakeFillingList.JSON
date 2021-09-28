@@ -1,0 +1,58 @@
+[
+  {
+    "name": "Chocolate Whip Cream",
+    "productCode": 1,
+    "category": 3,
+    "description": "Chocolate Whip Cream.",
+    "price": "250"
+  },
+  {
+    "name": "Raspberry Whip Cream",
+    "productCode": 2,
+    "category": 3,
+    "description": "Raspberry Whip Cream.",
+    "price": "300"
+  },
+  {
+    "name": "Vanilla Whip Cream",
+    "productCode": 3,
+    "category": 3,
+    "description": "Vanilla Whip Cream.",
+    "price": "200"
+  },
+  {
+    "name": "Diplomatic Cream",
+    "productCode": 4,
+    "category": 3,
+    "description": "Diplomatic Cream.",
+    "price": "200"
+  },
+  {
+    "name": "Lemon Cream",
+    "productCode": 5,
+    "category": 3,
+    "description": "Lemon Cream.",
+    "price": "250"
+  },
+  {
+    "name": "Dark Chocolate Ganache",
+    "productCode": 6,
+    "category": 3,
+    "description": "Dark Chocolate Ganache.",
+    "price": "300"
+  },
+  {
+    "name": "Cream Cheese Frosting",
+    "productCode": 7,
+    "category": 3,
+    "description": "Cream Cheese Frosting.",
+    "price": "300"
+  },
+  {
+    "name": "Burnt Salted Caramel",
+    "productCode": 8,
+    "category": 3,
+    "description": "Burnt Salted Caramel.",
+    "price": "300"
+  }
+]

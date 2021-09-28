@@ -1,0 +1,22 @@
+[
+  {
+    "name": "15cm",
+    "code": 1,
+    "price": 0
+  },
+  {
+    "name": "20cm",
+    "code": 2,
+    "price": 200
+  },
+  {
+    "name": "25cm",
+    "code": 3,
+    "price": 300
+  },
+  {
+    "name": "30cm",
+    "code": 4,
+    "price": 400
+  }
+]

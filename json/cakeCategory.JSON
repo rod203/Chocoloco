@@ -1,0 +1,22 @@
+[
+  {
+    "name": "Base",
+    "code": 1,
+    "description": "Base cake"
+  },
+  {
+    "name": "Frosting",
+    "code": 2,
+    "description": "The frosting can be buttercream, chocolate ganache or naked style (without frosting)."
+  },
+  {
+    "name": "filling",
+    "code": 3,
+    "description": "Filling cake, mousse, buttercream, whipped cream, jam"
+  },
+  {
+    "name": "Decoration",
+    "code": 4,
+    "description": "Style decoration frosting"
+  }
+]

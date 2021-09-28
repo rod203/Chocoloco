@@ -1,0 +1,44 @@
+[
+  {
+    "name": "White Buttercream",
+    "productCode": 1,
+    "category": 2,
+    "description": "White Buttercream.",
+    "price": "250"
+  },
+  {
+    "name": "Chocolate Buttercream",
+    "productCode": 2,
+    "category": 2,
+    "description": "Chocolate Buttercream.",
+    "price": "250"
+  },
+  {
+    "name": "Burnt Salted Caramel Buttercream",
+    "productCode": 3,
+    "category": 2,
+    "description": "Burnt Salted Caramel Buttercream.",
+    "price": "250"
+  },
+  {
+    "name": "Cream Cheese Frosting",
+    "productCode": 4,
+    "category": 2,
+    "description": "Cream Cheese Frosting.",
+    "price": "200"
+  },
+  {
+    "name": "Dark Chocolate ganache",
+    "productCode": 5,
+    "category": 2,
+    "description": "Intense cocoa cake with a pinch of salt.",
+    "price": "300"
+  },
+  {
+    "name": "Vanilla Whip Cream",
+    "productCode": 6,
+    "category": 2,
+    "description": "Vanilla Whip Cream.",
+    "price": "200"
+  }
+]

@@ -1,0 +1,51 @@
+[
+  {
+    "name": "Smooth",
+    "productCode": 1,
+    "category": 4,
+    "description": "Smooth and soft coverage.",
+    "price": "250"
+  },
+  {
+    "name": "Horizontal Stripes",
+    "productCode": 2,
+    "category": 4,
+    "description": "Horizontal Stripes.",
+    "price": "300"
+  },
+  {
+    "name": "Rustic",
+    "productCode": 3,
+    "category": 4,
+    "description": "Rustic.",
+    "price": "200"
+  },
+  {
+    "name": "Rosettes",
+    "productCode": 4,
+    "category": 4,
+    "description": "Rosettes.",
+    "price": "200"
+  },
+  {
+    "name": "Naked",
+    "productCode": 5,
+    "category": 4,
+    "description": "Naked with frosting in the top.",
+    "price": "250"
+  },
+  {
+    "name": "colorful sprinkles",
+    "productCode": 6,
+    "category": 4,
+    "description": "colorful sprinkles around the cake.",
+    "price": "300"
+  },
+  {
+    "name": "Chocolate Ganache Drip",
+    "productCode": 7,
+    "category": 4,
+    "description": "Classic chocolate drip over smooth frosting.",
+    "price": "250"
+  }
+]

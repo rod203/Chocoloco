@@ -54,82 +54,11 @@ class MyCakeIngredientInfo {
   }
 }
 
-const categoryProductList = [];
-const cakeBaseList = [];
-const cakeFillingList = [];
-const cakeFrostingList = [];
-const cakeDecorationList = [];
-const cakeHouseList = [];
-const cakeSizeList = [];
+
 const cart = [];
 const myCakeIngredients = [];
 
 
-
-// Definiendo productos completos
-
-// cakeHouseList.push( new CakesHouse ("BIRTHDAY CAKE",1,"Vanilla sponge cake with confetti sprinkles baked in. Filled with vanilla whipped cream and frosted with a funfetti buttercream (confetti sprinkles mixed with buttercream). Decorated naked with a few jimmies sprinkled on top.",250,"./assets/img/cakes/birtday/birthday-full.jpeg","./assets/img/cakes/birtday/birthday-slice.jpeg",1));
-// cakeHouseList.push( new CakesHouse ("STRAWBERRY CAKE",2,"Our classic vanilla chiffon cake layered with fresh strawberry cream and then topped with strawberry buttercream, in our signature ombre design.",200,"./assets/img/cakes/strawberry/strawberry-full.jpg","./assets/img/cakes/strawberry/strawberry-slice.jpg",1));
-// cakeHouseList.push( new CakesHouse ("THE BIRTHDAY CAKE",3,"Our sinfully delicious devil's food cake layered with whipped cream, topped with vanilla buttercream, and finished with colorful jimmies.",400,"./assets/img/cakes/devil party/devilparty-full.jpg","./assets/img/cakes/devil party/devilparty-slice.jpg",1));
-// cakeHouseList.push( new CakesHouse ("SALTED CARAMEL CAKE",4,"Our sinfully delicious devil's food cake layered with burnt caramel Bavarian, and then topped with caramel buttercream. In a grand finale, we drizzle the top with ganache and Maldon salt.",250,"./assets/img/cakes/salted caramel/saltedcaramel-full.jpg","./assets/img/cakes/salted caramel/saltedcaramel-slice.jpg",1));
-// cakeHouseList.push( new CakesHouse ("GOURMAND",5,"Our sinfully delicious devil's food cake layered and topped with decadent E Guittard 81% chocolate frosting.",250,"./assets/img/cakes/gourmand/gourmand-full.jpg","./assets/img/cakes/gourmand/gourmand-slice.jpg",1));
-// cakeHouseList.push( new CakesHouse ("RED VELVET CAKE",6,"Our rich red velvet chocolate cake layered and topped with cream cheese icing.",400,"./assets/img/cakes/red velvet/redvelve-full.jpg","./assets/img/cakes/red velvet/redvelve-slice.jpg",1));
-// cakeHouseList.push( new CakesHouse ("CARROT CAKE",7,"Carrot Cake studded with pineapple, raisins and walnuts — then layered and topped with cream cheese icing. (It counts as a serving of veggies!).",350,"./assets/img/cakes/carrot/carrot-full.jpeg","./assets/img/cakes/carrot/carrot-slice.jpeg",1));
-// cakeHouseList.push( new CakesHouse ("LEMON PASSIONFRUIT CAKE",8,"Our classic vanilla chiffon cake layered with lemon whipped cream and then topped with passionfruit buttercream in our signature ombre design. Need to Build Your Own Cake?.",220,"./assets/img/cakes/lemon/lemon-full.jpg","./assets/img/cakes/lemon/lemon-slice.jpg",1));
-// cakeHouseList.push( new CakesHouse ("NE -O COOKIE CAKE",9,"Our rich devil’s food cake layered with a filling that tastes just like your favorite childhood cookie and topped with whipped cream and mini oreos.",300,"./assets/img/cakes/ne-o cookie/neo-full.jpg","./assets/img/cakes/ne-o cookie/neo-slice.jpeg",1));
-
-// Definiendo categorias
-
-categoryProductList.push( new CategoryProductList ("Base",1,"Base cake"));
-categoryProductList.push( new CategoryProductList ("Frosting",2,"The frosting can be buttercream, chocolate ganache or naked style (without frosting)."));
-categoryProductList.push( new CategoryProductList ("Filling",3,"Filling cake, mousse, buttercream, whipped cream, jam"));
-categoryProductList.push( new CategoryProductList ("Decoration",4,"Style decoration frosting"));
-
-// Definiendo bases
-
-cakeBaseList.push( new CakesIngredients ("Vanilla Party",1,1,"Vanilla sponge cake with confetti sprinkles baked in.",300));
-cakeBaseList.push( new CakesIngredients ("Chocoloco",2,1,"Dobble chocolate sponge moist cake.",350));
-cakeBaseList.push( new CakesIngredients ("Red Velvet",3,1,"Classic and rich red velvet chocolate cake.",350));
-cakeBaseList.push( new CakesIngredients ("Carrot",4,1,"Classic sweet carrot cake.",350));
-cakeBaseList.push( new CakesIngredients ("Cacao Intense",5,1,"Intense cocoa cake with a pinch of salt.",300));
-cakeBaseList.push( new CakesIngredients ("Vanilla",6,1,"Simple vanilla sponge cake.",200));
-
-// Definiendo coberturas
-
-cakeFrostingList.push( new CakesIngredients ("White Buttercream",1,2,"White Buttercream.",250));
-cakeFrostingList.push( new CakesIngredients ("Chocolate Buttercream",2,2,"Chocolate Buttercream.",250));
-cakeFrostingList.push( new CakesIngredients ("Burnt Salted Caramel Buttercream",3,2,"Burnt Salted Caramel Buttercream.",250));
-cakeFrostingList.push( new CakesIngredients ("Cream Cheese Frosting",4,2,"Cream Cheese Frosting.",250));
-cakeFrostingList.push( new CakesIngredients ("Dark Chocolate ganache",5,2,"Dark Chocolate ganache.",250));
-cakeFrostingList.push( new CakesIngredients ("Vanilla Whip Cream",6,2,"Vanilla Whip Cream.",250));
-
-// Definiendo rellenos
-
-cakeFillingList.push( new CakesIngredients ("Chocolate Whip Cream",1,3,"Chocolate Whip Cream.",250));
-cakeFillingList.push( new CakesIngredients ("Raspberry Whip Cream",2,3,"Raspberry Whip Cream.",250));
-cakeFillingList.push( new CakesIngredients ("Vanilla Whip Cream",3,3,"Vanilla Whip Cream.",250));
-cakeFillingList.push( new CakesIngredients ("Diplomatic Cream",4,3,"Diplomatic Cream.",250));
-cakeFillingList.push( new CakesIngredients ("Lemon Cream",5,3,"Lemon Cream.",250));
-cakeFillingList.push( new CakesIngredients ("Dark Chocolate Ganache",6,3,"Dark Chocolate Ganache.",250));
-cakeFillingList.push( new CakesIngredients ("Cream Cheese Frosting",7,3,"Cream Cheese Frosting.",250));
-cakeFillingList.push( new CakesIngredients ("Burnt Salted Caramel",8,3,"Burnt Salted Caramel.",250));
-
-// Definiendo decoraciones
-
-cakeDecorationList.push( new CakesIngredients ("Smooth",1,4,"Smooth and soft coverage.",250));
-cakeDecorationList.push( new CakesIngredients ("Horizontal Stripes",2,4,"Horizontal Stripes.",250));
-cakeDecorationList.push( new CakesIngredients ("Rustic",3,4,"Rustic.",250));
-cakeDecorationList.push( new CakesIngredients ("Rosettes",4,4,"Rosettes.",250));
-cakeDecorationList.push( new CakesIngredients ("Naked",5,4,"Naked with frosting in the top.",250));
-cakeDecorationList.push( new CakesIngredients ("colorful sprinkles",5,4,"colorful sprinkles around the cake.",250));
-cakeDecorationList.push( new CakesIngredients ("Chocolate Ganache Drip",6,4,"Classic chocolate drip over smooth frosting.",250));
-
-// Definiendo tamaños
-
-cakeSizeList.push( new SizeList ("15cm",1,0,));
-cakeSizeList.push( new SizeList ("20cm",2,200,));
-cakeSizeList.push( new SizeList ("25cm",3,350,));
-cakeSizeList.push( new SizeList ("30cm",4,500,));
 
 myCakeIngredients.push( new MyCakeIngredientInfo (" ",0,0,));
 myCakeIngredients.push( new MyCakeIngredientInfo (" ",0,0,));
@@ -147,9 +76,10 @@ const productList = document.getElementById('products-list');
 
 // CREAR CARDS AUTOMATICAS
 // //Declaramos la url que vamos a usar para el GET
-const URLGET = "json/cakes.JSON"
+const cakeHouseList = [];
+const CAKEHOUSELISTDATA = "json/homeCakes.JSON"
 let productos = [];
-$.get(URLGET, function (respuesta, estado) {
+$.get(CAKEHOUSELISTDATA, function (respuesta, estado) {
       if(estado === "success"){
         for (const producto of respuesta) {
           cakeHouseList.push( new CakesHouse (producto.name, producto.code, producto.description, producto.price, producto.image1, producto.image2,producto.quantity));
@@ -215,61 +145,95 @@ $.get(URLGET, function (respuesta, estado) {
 // LLENAR OPCIONES DEL FORMULARIO MAKE YOUR CAKE
 
 // CAKE BASE
+const CAKEBASELISTDATA = "json/cakeBaseList.JSON";
+const cakeBaseList = [];
 const baseList = document.getElementById('base');
-
-for (const base of cakeBaseList) {
-  let listElement = document.createElement("option");
-  listElement.setAttribute("class", "selection-style");
-  listElement.setAttribute("value", `${base.productCode}`);
-  listElement.innerHTML = `${base.name} ($${base.price})`;
-  baseList.appendChild(listElement);
-}
+$.get(CAKEBASELISTDATA, function (respuesta, estado) {
+      if(estado === "success"){
+        console.log(respuesta)
+        for (const producto of respuesta) {
+          cakeBaseList.push(new CakesIngredients (producto.name, producto.productCode, producto.category,producto.description, producto.price));
+          let listElement = document.createElement("option");
+          listElement.setAttribute("class", "selection-style");
+          listElement.setAttribute("value", `${producto.productCode}`);
+          listElement.innerHTML = `${producto.name} ($${producto.price})`;
+          baseList.appendChild(listElement);
+        }
+      }
+  });
 
 // CAKE FILLINGS
+const CAKEFILLINGLISTDATA = "json/cakeFillingList.JSON";
+const cakeFillingList = [];
 const fillingList = document.getElementById('filling');
+$.get(CAKEFILLINGLISTDATA, function (respuesta, estado) {
+  if(estado === "success"){
+    console.log(respuesta)
+    for (const producto of respuesta) {
+      cakeFillingList.push(new CakesIngredients (producto.name, producto.productCode, producto.category,producto.description, producto.price));
+      let listElement = document.createElement("option");
+      listElement.setAttribute("class", "selection-style");
+      listElement.setAttribute("value", `${producto.productCode}`);
+      listElement.innerHTML = `${producto.name} ($${producto.price})`;
+      fillingList.appendChild(listElement);
+    }
+  }
+});
 
-for (const filling of cakeFillingList) {
-  let listElement = document.createElement("option");
-  listElement.setAttribute("class", "selection-style");
-  listElement.setAttribute("value", `${filling.productCode}`);
-  listElement.innerHTML = `${filling.name} ($${filling.price})`;
-  fillingList.appendChild(listElement);
-}
 
 // CAKE FROSTINGS
+const CAKEFROSTINGLISTDATA = "json/cakeFrostList.JSON";
+const cakeFrostingList = [];
 const frostingList = document.getElementById('frosting');
-
-for (const frosting of cakeFrostingList) {
-  let listElement = document.createElement("option");
-  listElement.setAttribute("class", "selection-style");
-  listElement.setAttribute("value", `${frosting.productCode}`);
-  listElement.innerHTML = `${frosting.name} ($${frosting.price})`;
-  frostingList.appendChild(listElement);
-}
+$.get(CAKEFROSTINGLISTDATA, function (respuesta, estado) {
+  if(estado === "success"){
+    console.log(respuesta)
+    for (const producto of respuesta) {
+      cakeFrostingList.push(new CakesIngredients (producto.name, producto.productCode, producto.category,producto.description, producto.price));
+      let listElement = document.createElement("option");
+      listElement.setAttribute("class", "selection-style");
+      listElement.setAttribute("value", `${producto.productCode}`);
+      listElement.innerHTML = `${producto.name} ($${producto.price})`;
+      frostingList.appendChild(listElement);
+    }
+  }
+});
 
 // CAKE DECORATION
-
 const decorationList = document.getElementById('decoration');
-
-for (const decoration of cakeDecorationList) {
-  let listElement = document.createElement("option");
-  listElement.setAttribute("class", "selection-style");
-  listElement.setAttribute("value", `${decoration.productCode}`);
-  listElement.innerHTML = `${decoration.name} ($${decoration.price})`;
-  decorationList.appendChild(listElement);
-}
+const CAKEDECORATIONLISTDATA = "json/cakeFrostList.JSON";
+const cakeDecorationList = [];
+$.get(CAKEDECORATIONLISTDATA, function (respuesta, estado) {
+  if(estado === "success"){
+    console.log(respuesta)
+    for (const producto of respuesta) {
+      cakeDecorationList.push(new CakesIngredients (producto.name, producto.productCode, producto.category,producto.description, producto.price));
+      let listElement = document.createElement("option");
+      listElement.setAttribute("class", "selection-style");
+      listElement.setAttribute("value", `${producto.productCode}`);
+      listElement.innerHTML = `${producto.name} ($${producto.price})`;
+      decorationList.appendChild(listElement);
+    }
+  }
+});
 
 // CAKE SIZE
 const SizesList = document.getElementById('size');
-
-for (const size of cakeSizeList) {
-  let listElement = document.createElement("option");
-  listElement.setAttribute("class", "selection-style");
-  listElement.setAttribute("value", `${size.code}`);
-  listElement.innerHTML = `${size.name} ($${size.price})`;
-  SizesList.appendChild(listElement);
-}
-
+const CAKESIZELISTDATA = "json/cakeSizeList.JSON";
+const cakeSizeList = [];
+$.get(CAKESIZELISTDATA, function (respuesta, estado) {
+  if(estado === "success"){
+    console.log(respuesta)
+    for (const producto of respuesta) {
+      cakeSizeList.push(new SizeList (producto.name, producto.code, producto.price));
+      let listElement = document.createElement("option");
+      listElement.setAttribute("class", "selection-style");
+      listElement.setAttribute("value", `${producto.code}`);
+      listElement.innerHTML = `${producto.name} ($${producto.price})`;
+      SizesList.appendChild(listElement);
+    }
+  }
+});
 /////////////////////////////////////////////////////////////
 
 // CART POPUP FUNCTIONS
@@ -278,14 +242,19 @@ function cartItems(item){
   let itemCartDom = $(itemCart);
   $(itemCartDom).remove();
   $("#cart-count-table").append(`
-    <div id="item-cart-${item.code}">
-      <p id="product-${item.code}"> ${item.name} 
-        <span class=" bg-warning">$ ${item.price}</span>
-        <span class="quantity-bottons-item" id="quantity-product-${item.code}"> Cantidad: ${item.quantity}</span>
+    <div id="item-cart-${item.code}" class="item-product-render">
+      <p class="item-product-title" id="product-${item.code}">${item.name} - $${item.price} |</p>
+      <div class="item-control-container">
+        <p class="quantity-item-text">QUANTITY </p>
         <button class="cart-control-btn" id="btn-rest-${item.code}">-</button>
+        <p class="quantity-bottons-item" id="quantity-product-${item.code}">${item.quantity}</p>
         <button class="cart-control-btn" id="btn-add-${item.code}">+</button>
-        <button class="cart-control-btn" id="btn-delete-${item.code}">x</button>
-      </p>
+      </div>
+      <button class="cart-control-btn" id="btn-delete-${item.code}">x</button>
+      </div>
+        
+        
+        
     </div>`)
   $("#btn-add-"+item.code).click(function(){addCantidad(item.code)});
   $("#btn-delete-"+item.code).click(function(){eliminarCarrito(item.code)});
@@ -302,7 +271,7 @@ function restarCantidad (item){
     cart.splice(positionItem, 1);
   }
   itemSelected.quantity = newQuantity;
-  $("#quantity-product-"+item).html(`Cantidad: ${itemSelected.quantity}`);
+  $("#quantity-product-"+item).html(`${itemSelected.quantity}`);
   let totalPrice = JSON.parse(localStorage.getItem("totalPrice"));
   cartTotalPrice = totalPrice - itemSelected.price;
   cartTotal();
@@ -316,7 +285,7 @@ function addCantidad (item){
   const itemSelected = cart.find(producto => producto.code == item);
   itemSelected.quantity += 1;
   localStorage.setItem("cart", JSON.stringify(cart));
-  $("#quantity-product-"+item).html(`Cantidad: ${itemSelected.quantity}`);
+  $("#quantity-product-"+item).html(`${itemSelected.quantity}`);
   let totalPrice = JSON.parse(localStorage.getItem("totalPrice"));
   cartTotalPrice = totalPrice + itemSelected.price;
   cartTotal();
@@ -339,11 +308,14 @@ function eliminarCarrito(item) {
   localStorage.setItem("cart", JSON.stringify(cart));
   localStorage.setItem("totalPrice",JSON.stringify(cartTotalPrice));
   emptyCart();
+  btnFinalOrder();
 }
 
 function emptyCart() {
   if (cart.length == 0){
-    $("#cart-count-table").append(`<div class="cart-empty">CARRITO VACIO</div>`)
+    $("#cart-count-table").append(`<div class="cart-empty">EMPTY CART</div>`);
+    $(".total-price-containe").remove();
+    localStorage.clear();
   } else {
     $(".cart-empty").remove();
   }
@@ -378,6 +350,7 @@ function addToCart(itemCode) {
   }
   cartTotal();
   emptyCart();
+  btnFinalOrder();
   localStorage.setItem("cart", JSON.stringify(cart));
   localStorage.setItem("totalPrice",JSON.stringify(cartTotalPrice));
   console.log(cart);
@@ -462,6 +435,7 @@ function addToCartBuilder() {
       const newBuild = cart.find(product => product.code == newCode);
       cartItems(newBuild);
       emptyCart();
+      btnFinalOrder();
       cartTotal();
       localStorage.setItem("cart", JSON.stringify(cart));
       localStorage.setItem("totalPrice",JSON.stringify(cartTotalPrice));
@@ -503,6 +477,11 @@ function cartTotal() {
   // remuevo precio viejo, agrego precio nuevo.
   $(".total-price").remove();
   $("#cart-total-price").append(`<p class="total-price">$${cartTotalPrice}</p>`);
+  $(".total-price-containe").remove();
+  $("#cart-total-price-modal").append(`
+  <div class="total-price-containe">
+  <p class="total-price-cart"><b>TOTAL PRICE:</b> $${cartTotalPrice}</p>
+  </div>`);
 }
 
 // Botton Reset Builder
@@ -527,14 +506,36 @@ $(document).ready(function(){
     console.log(price);
     $(".total-price").remove();
     $("#cart-total-price").append(`<p class="total-price">$${price}</p>`);
+    $(".total-price-cart").remove();
+    $("#cart-total-price-modal").append(`
+    <div class="total-price-containe">
+    <p class="total-price-cart"><b>TOTAL PRICE:</b> $${price}</p>
+    </div>`);
   }
   emptyCart();
-  
-})
-
-// cart nav event
-$("#cart-nav-btn").click(function(){
-  $("#cart-display").toggle();
+  btnFinalOrder();
 });
 
+// MANEJO DEL BOTON FINALIZAR COMPRA
+function btnFinalOrder(){
+  if (cart.length == 0){
+    $("#final-order-btn").remove();
+    $("#delete-cart-btn").remove();
+  } else {
+      $("#end-order").html(`
+      <button type="button" class="delete-cart btn-dark" id="delete-cart-btn" onclick="clearCart()">DELET CART</button>
+      <button id="final-order-btn" type="button" class="btn btn-danger btn-finalize" data-bs-toggle="modal" data-bs-target="#finalize-order-btn">CHECK OUT</button>
+      `);
+    }
+}
 
+// LIMPIAR STORE AL ENVIAR EL PEDIDO
+$("#success-btn").click(function(){
+  localStorage.clear();
+  location.reload();
+});
+
+function clearCart() {
+  localStorage.clear();
+  location.reload();
+}
