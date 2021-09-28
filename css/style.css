@@ -434,6 +434,8 @@ Product cards
 .item-product-render{
   margin:0px;
   display:flex;
+  justify-content: flex-end;
+  padding-top:10px;
 }
 .btn-viewmore {
   position: absolute;
