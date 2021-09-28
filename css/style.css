@@ -423,7 +423,12 @@ Product cards
   width:100%;
   text-align:center;
   padding-top:10px;
-
+}
+.total-price-cart {
+  font-size:14px;
+}
+.total-price-cart b {
+  font-weight: 600;
 }
 .item-product-render {
   display:flex;

@@ -509,7 +509,7 @@ $(document).ready(function(){
     $(".total-price-cart").remove();
     $("#cart-total-price-modal").append(`
     <div class="total-price-containe">
-    <p class="total-price-cart"><b>TOTAL PRICE:</b> $${price}</p>
+    <p class="total-price-cart">TOTAL PRICE: <b>$${price}</b></p>
     </div>`);
   }
   emptyCart();
