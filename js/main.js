@@ -436,6 +436,7 @@ function addToCartBuilder() {
       emptyCart();
       btnFinalOrder();
       cartTotal();
+      location.reload();
       localStorage.setItem("cart", JSON.stringify(cart));
       localStorage.setItem("totalPrice",JSON.stringify(cartTotalPrice));
 }
