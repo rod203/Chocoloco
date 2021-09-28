@@ -394,6 +394,9 @@ Product cards
   background-color:white;
   border:1px solid black;
 }
+.cart-control-btn-delete {
+  margin-left: 5px;
+}
 .quantity-bottons-item {
   margin:0px;
   padding :2px 10px;

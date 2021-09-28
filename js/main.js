@@ -59,7 +59,6 @@ const cart = [];
 const myCakeIngredients = [];
 
 
-
 myCakeIngredients.push( new MyCakeIngredientInfo (" ",0,0,));
 myCakeIngredients.push( new MyCakeIngredientInfo (" ",0,0,));
 myCakeIngredients.push( new MyCakeIngredientInfo (" ",0,0,));
@@ -250,7 +249,7 @@ function cartItems(item){
         <p class="quantity-bottons-item" id="quantity-product-${item.code}">${item.quantity}</p>
         <button class="cart-control-btn" id="btn-add-${item.code}">+</button>
       </div>
-      <button class="cart-control-btn" id="btn-delete-${item.code}">x</button>
+      <button class="cart-control-btn cart-control-btn-delete" id="btn-delete-${item.code}">x</button>
       </div>
         
         
@@ -535,6 +534,7 @@ $("#success-btn").click(function(){
   location.reload();
 });
 
+// CONTROLADOR DE BOTON DE VACIAR CARRITO
 function clearCart() {
   localStorage.clear();
   location.reload();
